@@ -488,6 +488,10 @@ body {
         &.ng-hide {
             opacity: 0;
         }
+
+        &.anim{
+            transition:left 0.3s linear 0s;
+        }
     }
 }
 
