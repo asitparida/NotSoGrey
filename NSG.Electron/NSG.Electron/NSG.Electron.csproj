@@ -151,6 +151,8 @@
     <Content Include="lib\underscore-min.js" />
     <Content Include="packages.config" />
     <Content Include="package.json" />
+    <Content Include="releases\alpha\NotSoGrey-win32-ia32.zip" />
+    <Content Include="releases\alpha\NotSoGrey-win32-x64.zip" />
     <Content Include="scss\page.scss" />
     <Content Include="scss\utils.scss" />
     <Content Include="scss\vars.scss" />
@@ -179,9 +181,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="releases\alpha\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
