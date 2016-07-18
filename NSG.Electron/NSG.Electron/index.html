@@ -43,7 +43,7 @@
 </head>
 <body ng-controller="AppController as app" style="height:540px;overflow-y:hidden;">
     <div class="app-content">
-        <div class="spinner-holder" ng-hide="app.hideLoader">
+        <div class="spinner-holder" ng-hide="app.hideLoader" ng-style="{'background-color':app.shared.activeColor}">
             <div class="spinner">
                 <div class="double-bounce1"></div>
                 <div class="double-bounce2"></div>

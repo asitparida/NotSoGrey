@@ -4,6 +4,9 @@
     self.state = $state;
     self.shared = SharedService;
     self.window = $window;
+    self.showElements = false;
+    self.animTop = false;
+    self.showBadge = false;
     var _actions = [
         { id: 2, name: 'accept', icon: 'icon-png accept', fn: 'app.goColorDetails()' },
         { id: 1, name: 'close', icon: 'icon-png reject', fn: 'app.closeApp()' }
@@ -17,8 +20,10 @@
     self.rgb = { r: 80, g: 10, b: 2 };
     self.hsb = { h: 80, s: 10, b: 2 };
     self.hex = '1ca32d';
-    var _cardPanInit = false;
+    var _cardPanInit = _cardPanInitBefore = _cardPanInitAfter = false;
     var _cardPanElement = null;
+    var _cardPanElementBefore = null;
+    var _cardPanElementAfter = null;
     var marginTopBeforePan = 0;
     self.height = 0;
     self.goDetails = function () {
@@ -35,35 +40,66 @@
         });
     }
 
-    self.canvas = { id: _.uniqueId('canvasPicker'), top: 40, instance: null, ctx: null };
-    self.canvasId = _.uniqueId('canvasPicker');
+    self.canvas = { id: _.uniqueId('canvasPicker'), top: null, instance: null, ctx: null, instanceBefore: null, instanceAfter: null, ctxBefore: null, ctxAfter: null, leftBefore: -340, leftAfter: 340, colorCurrent: '#fff', colorAfter: '#fff', colorBefore: '#fff' };
+    self.canvasIdBefore = _.uniqueId('canvasPicker');
+    self.canvasIdCurrent = _.uniqueId('canvasPicker');
+    self.canvasIdAfter = _.uniqueId('canvasPicker');
 
-    self.init = function () {
-        self.origColorPrimary = self.color;
+    self.init = function (_color) {
+        self.origColorPrimary = _color;
         var _height = self.window.innerHeight;
         var _width = self.window.innerWidth;
 
-        self.canvas.instance = document.getElementById(self.canvasId);
-        self.canvas.instance.height = _height - 48;
-        self.canvas.instance.width = _width;
+        self.canvas.instance = document.getElementById(self.canvasIdCurrent);
+        self.canvas.instanceBefore = document.getElementById(self.canvasIdBefore);
+        self.canvas.instanceAfter = document.getElementById(self.canvasIdAfter);
+        self.canvas.instance.height = self.canvas.instanceBefore.height = self.canvas.instanceAfter.height = _height - 48;
+        self.canvas.instance.width = self.canvas.instanceBefore.width = self.canvas.instanceAfter.width = _width;
 
         self.canvas.ctx = self.canvas.instance.getContext("2d");
+        self.canvas.ctxBefore = self.canvas.instanceBefore.getContext("2d");
+        self.canvas.ctxAfter = self.canvas.instanceAfter.getContext("2d");
+
         var _grd = self.canvas.ctx.createLinearGradient(0, 0, 0, self.canvas.instance.height);
-
         _grd.addColorStop(0, "white");
-        _grd.addColorStop(0.5, tinycolor(self.color).toRgbString());
+        self.canvas.colorCurrent = _color;
+        _grd.addColorStop(0.5, tinycolor(self.canvas.colorCurrent).toRgbString());
         _grd.addColorStop(1, "black");
-
         self.canvas.ctx.fillStyle = _grd;
         self.canvas.ctx.fillRect(0, 0, _width, self.canvas.instance.height);
+
+        _grd = self.canvas.ctxBefore.createLinearGradient(0, 0, 0, self.canvas.instanceBefore.height);
+        _grd.addColorStop(0, "white");
+        self.canvas.colorBefore = self.shared.getPreviousHueHex(_color);
+        _grd.addColorStop(0.5, tinycolor(self.canvas.colorBefore).toRgbString());
+        _grd.addColorStop(1, "black");
+        self.canvas.ctxBefore.fillStyle = _grd;
+        self.canvas.ctxBefore.fillRect(0, 0, _width, self.canvas.instanceBefore.height);
+
+        _grd = self.canvas.ctxAfter.createLinearGradient(0, 0, 0, self.canvas.instanceAfter.height);
+        _grd.addColorStop(0, "white");
+        self.canvas.colorAfter = self.shared.getNextHueHex(_color);
+        _grd.addColorStop(0.5, tinycolor(self.canvas.colorAfter).toRgbString());
+        _grd.addColorStop(1, "black");
+        self.canvas.ctxAfter.fillStyle = _grd;
+        self.canvas.ctxAfter.fillRect(0, 0, _width, self.canvas.instanceAfter.height);
+
+
         self.canvas.top = self.canvas.instance.height / 2;
         self.currenTopPosition = self.canvas.top;
         self.getBadgeColor();
         document.getElementById('id_cardPannableContent').focus();
+        if (self.animTop == false) {
+            $timeout(function () {
+                self.animTop = true;
+                if (self.showBadge == false)
+                    self.showBadge = true;
+            }, 200);
+        }
     }
 
     self.getBadgeColor = function () {
-        var _imgData = document.getElementById(self.canvasId).getContext("2d").getImageData(self.canvas.instance.width / 2, self.currenTopPosition, 1, 1).data;
+        var _imgData = document.getElementById(self.canvasIdCurrent).getContext("2d").getImageData(self.canvas.instance.width / 2, self.currenTopPosition, 1, 1).data;
         var _rgb = { r: _imgData[0], g: _imgData[1], b: _imgData[2] };
         self.badgeColor = tinycolor(_rgb).toHexString();
         self.badgeForeColor = self.shared.getForegrundContrastedColor(self.badgeColor);
@@ -71,7 +107,10 @@
         self.shared.activeColor = self.color = self.badgeColor;
     }
 
-    $timeout(self.init, 100);
+    $timeout(function () {
+        self.showElements = true;
+        $timeout(self.init(self.color), 100);
+    }, 200);
 
     self.pan = function (e, type) {
         console.log('panstart ' + type, e);
@@ -89,10 +128,30 @@
             _cardPanInit == true;
         }
     }
+
+    self.initializeCardPanElementBefore = function () {
+        if (_cardPanInitBefore == false) {
+            _cardPanElementBefore = document.getElementById(self.canvasIdBefore);
+            _cardPanInitBefore == true;
+        }
+    }
+
+    self.initializeCardPanElementAfter = function () {
+        if (_cardPanInitAfter == false) {
+            _cardPanElementAfter = document.getElementById(self.canvasIdAfter);
+            _cardPanInitAfter == true;
+        }
+    }
+
     self.panStart = function (e) {
         self.initializeCardPanElement();
+        self.initializeCardPanElementBefore();
+        self.initializeCardPanElementAfter();
         self.topBeforePan = (parseInt(_cardPanElement.style.top) || 0);
+        self.leftBeforePanForBefore = (parseInt(_cardPanElementBefore.style.left) || 0);
+        self.leftBeforePanForAfter = (parseInt(_cardPanElementAfter.style.left) || 0);
     }
+
     self.panvert = function (e, type) {
         self.initializeCardPanElement();
         var _cardPanElementProps = _cardPanElement.getBoundingClientRect();
@@ -108,25 +167,51 @@
         self.currenTopPosition = self.canvas.top;
         self.getBadgeColor();
     }
+
+    self.panhorz = function (e, type) {
+        if (type == 'right') {
+            self.initializeCardPanElementBefore();
+            var _newLeft = self.leftBeforePanForBefore + (parseInt(e.deltaX) || 0);
+            self.canvas.leftBefore = _newLeft;
+        }
+        else if (type == 'left') {
+            self.initializeCardPanElementAfter();
+            var _newLeft = self.leftBeforePanForAfter + (parseInt(e.deltaX) || 0);
+            self.canvas.leftAfter = _newLeft;
+        }
+    }
+
+    self.panHorzEnd = function (e) {
+        if (self.canvas.leftBefore >= -170) {
+            self.init(self.canvas.colorBefore);            
+        }
+        if (self.canvas.leftAfter <= 170) {
+            self.init(self.canvas.colorAfter);
+        }
+        self.canvas.leftBefore = -340;
+        self.canvas.leftAfter = 340;
+    }
+
     self.mouseWheelUp = function () {
         self.initializeCardPanElement();
         self.topBeforePan = (parseInt(_cardPanElement.style.top) || 0);
         self.panvert({ 'deltaY': -5 }, 'down');
     }
+
     self.mouseWheelDown = function () {
         self.initializeCardPanElement();
         self.topBeforePan = (parseInt(_cardPanElement.style.top) || 0);
         self.panvert({ 'deltaY': 5 }, 'up');
     }
     self.swipeLeft = function () {
-        self.color = self.shared.getNextHueHex(self.color);
-        self.shared.activeColor = self.color;
-        self.init();
+        //self.color = self.shared.getNextHueHex(self.color);
+        //self.shared.activeColor = self.color;
+        //self.init();
     }
     self.swipeRight = function () {
-        self.color = self.shared.getPreviousHueHex(self.color);
-        self.shared.activeColor = self.color;
-        self.init();
+        //self.color = self.shared.getPreviousHueHex(self.color);
+        //self.shared.activeColor = self.color;
+        //self.init();
     }
     self.keyUp = function (e) {
         if (e.keyCode == 38) {
