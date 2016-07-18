@@ -6,7 +6,7 @@
 
     //LOAD PAGE NAV ACTIONS
     var _actions = [
-            { id: 1, name: 'color-picker', icon: 'icon-app-color-picker', fn: 'app.goColorPicker()' },
+            { id: 1, name: 'color-picker', icon: 'icon-app-color-picker', fn: 'app.closeApp()' },
             { id: 2, name: 'color-picker', icon: 'icon-app-logo', fn: 'app.goColorDetails()', active: true },
             { id: 4, name: 'color-contrast', icon: 'icon-app-contrast', fn: 'app.goColorContrast()' },
             { id: 3, name: 'color-theme', icon: 'icon-app-theme', fn: 'app.goThemesPopular()' },

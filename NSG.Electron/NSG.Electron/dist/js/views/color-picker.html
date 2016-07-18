@@ -11,8 +11,8 @@
          hm-panup="color.panvert($event, 'up')"
          hm-pandown="color.panvert($event, 'down')"
          hm-recognizer-options='[{"type":"pan","threshold":10,"pointers": 0, "directions":"DIRECTION_ALL"}]'>
-        <canvas ng-attr-id="{{color.canvasId}}"></canvas>
-        <div class="colorHighlighter" ng-style="{'top': color.canvas.top + 'px', 'background-color': color.badgeColor, 'border-color': color.badgeForeColor }" id="id_cardPannableContent" tabindex="0" ng-keyup="color.keyUp($event)">
+        <canvas ng-attr-id="{{color.canvasId}}" ng-show="color.showElements"></canvas>
+        <div class="colorHighlighter" ng-class="{'anim': color.animTop}" ng-style="{'top': color.canvas.top + 'px', 'background-color': color.badgeColor, 'border-color': color.badgeForeColor }" id="id_cardPannableContent" tabindex="0" ng-keyup="color.keyUp($event)" ng-show="color.showElements && color.showBadge">
             <label class="nsg-color-shade-name" ng-bind="color.badgeColor" ng-style="{'color': color.badgeForeColor}"></label>
             <i class="icon icon-targetFixedFilled nsg-primary-shade opac1" ng-show="true" ng-style="{'background-color': color.origColorPrimary}" ng-click="color.resetColor()"></i>
         </div>

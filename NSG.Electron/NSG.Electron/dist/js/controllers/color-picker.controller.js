@@ -4,6 +4,9 @@
     self.state = $state;
     self.shared = SharedService;
     self.window = $window;
+    self.showElements = false;
+    self.animTop = false;
+    self.showBadge = false;
     var _actions = [
         { id: 2, name: 'accept', icon: 'icon-png accept', fn: 'app.goColorDetails()' },
         { id: 1, name: 'close', icon: 'icon-png reject', fn: 'app.closeApp()' }
@@ -35,7 +38,7 @@
         });
     }
 
-    self.canvas = { id: _.uniqueId('canvasPicker'), top: 40, instance: null, ctx: null };
+    self.canvas = { id: _.uniqueId('canvasPicker'), top: null, instance: null, ctx: null };
     self.canvasId = _.uniqueId('canvasPicker');
 
     self.init = function () {
@@ -60,6 +63,13 @@
         self.currenTopPosition = self.canvas.top;
         self.getBadgeColor();
         document.getElementById('id_cardPannableContent').focus();
+        if (self.animTop == false) {
+            $timeout(function () {
+                self.animTop = true;
+                if (self.showBadge == false)
+                    self.showBadge = true;
+            }, 200);
+        }
     }
 
     self.getBadgeColor = function () {
@@ -71,7 +81,10 @@
         self.shared.activeColor = self.color = self.badgeColor;
     }
 
-    $timeout(self.init, 100);
+    $timeout(function () {
+        self.showElements = true;
+        $timeout(self.init, 100);
+    }, 200);
 
     self.pan = function (e, type) {
         console.log('panstart ' + type, e);

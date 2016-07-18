@@ -1,6 +1,13 @@
 ﻿angular.module('NotSoGrey')
 .service("SharedService", ["$http", "$q", "$uibModal", "$window", "$resource", function ($http, $q, $uibModal, $window, $resource) {
     var self = this;
+    try {
+        let electron = require('electron');
+        let _currWindow = electron.remote.getCurrentWindow();
+        self.activeColor = _currWindow.activeColor || '#c0392b';
+    } catch (e) {
+        self.activeColor = '#c0392b';
+    }
     self.uibModal = $uibModal;
     self.actions = [];
     self.resource = $resource;
@@ -146,14 +153,6 @@
             _resultantHue = _targetWheelColor.h;
         }
         return _resultantHue;
-    }
-
-    try {
-        let electron = require('electron');
-        let _currWindow = electron.remote.getCurrentWindow();
-        self.activeColor = _currWindow.activeColor || '#c0392b';
-    } catch (e) {
-        self.activeColor = '#c0392b';
     }
 
     self.loadActions = function (items) {

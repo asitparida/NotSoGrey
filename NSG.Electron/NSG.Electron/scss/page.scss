@@ -459,6 +459,19 @@ body {
     &.overflowHid {
         overflow-y: hidden;
     }
+
+    canvas {
+        opacity: 1;
+
+        &.ng-hide-add,
+        &.ng-hide-remove {
+            transition: all linear 0.5s;
+        }
+
+        &.ng-hide {
+            opacity: 0;
+        }
+    }
 }
 
 .nsg-color-details-color-banner {
@@ -854,8 +867,12 @@ body {
     left: 0;
     border: 1px solid rgba(255,255,255,1);
     margin-top: -40px;
-    transition: 0.3s ease-in-out 0s;
+    transition: background 0.3s ease-in-out 0s;
     outline: none;
+
+    &.anim {
+        transition: top 0.3s ease-in-out 0s;
+    }
 }
 
 
