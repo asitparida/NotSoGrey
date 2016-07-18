@@ -1,0 +1,13 @@
+﻿<div ng-controller="ColorDetailsController as color" class="anim-slide-left">
+    <div class="nsg-mid-view-container we48">
+        <div class="nsg-color-details-color-banner full curPointer" ng-style="{'background-color': color.activeColor}" ng-click="app.goColorEdit()">
+            <div class="color-banner-source" ng-class="{'mid': color.activeChange}" ng-style="{'background-color': color.origColor}" ng-click="color.revertToOrig($event)"></div>
+            <i class="icon icon-png edit color-edit" ng-style="{'color': color.foreColor}" ng-show="!app.editColor"></i>
+            <label class="color-banner-title curPointer" ng-style="{'color': color.foreColor}">
+                <span ng-class="{'dontShowOnHover': !app.editColor}">{{color.name}}</span>
+                <span ng-class="{'showOnHover': !app.editColor}" ng-show="!app.editColor">Tap to edit</span>
+            </label>
+        </div>
+        <div class="ui-color-details anim-in-out anim-slide-below-fade" ui-view data-anim-speed="294" data-anim-sync="true"></div>
+    </div>
+</div>

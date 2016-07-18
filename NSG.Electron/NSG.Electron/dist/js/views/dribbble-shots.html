@@ -1,0 +1,19 @@
+﻿<div ng-controller="DribbbleShotsController as dribbble" class="anim-slide-left">
+    <div class="dribbble-loading" ng-hide="dribbble.shotsLoading == false" id="nsg_dribbbleLoading" ng-style="{'background-color': dribbble.shared.activeColor}">
+        <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+    </div>
+    <div class="nsg-mid-view-container we48 nsg-themes-popular nsg-dribbble-shots" ng-show="dribbble.shotsAvailable">
+        <label class="nsg-title">Dribbble Shots</label>
+        <div class="nsg-theme-item dribbble-shot" ng-repeat="shot in dribbble.shots track by $index">
+            <div class="nsg-theme-color-container">
+                <a ng-click="dribbble.openShot(shot)">
+                    <div class="dribbble-img-shot" ng-style="{'background-image': 'url(' + shot.img + ')'}"></div>
+                </a>
+            </div>
+        </div>
+        <a class="dribbbleLink" ng-click="dribbble.openShotsPage()">See more shots @ Dribble</a>
+    </div>
+</div>

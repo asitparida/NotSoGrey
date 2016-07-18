@@ -1,0 +1,98 @@
+﻿<div class="nsg-color-details-edit">
+    <div ng-cloak="" class="nsg-color-edit-tabs">
+        <md-content>
+            <md-tabs md-dynamic-height="" md-border-bottom="">
+                <md-tab label="CMYK">
+                    <md-content class="md-padding">
+                        <md-slider-container>
+                            <md-slider exclass="nsg" mark="C" flex="" min="0" max="100" ng-model="color.cmyk.c" ng-change="color.cmykValueChanged()" aria-label="cmyk-c" id="cmyk-c-slider">
+                            </md-slider>
+                        </md-slider-container>
+                        <md-input-container>
+                            <input class="nsg-edit-input" ng-model="color.cmyk.c" ng-change="color.cmykValueChanged(true)" /><span style="margin-left:1px">%</span>
+                        </md-input-container>
+                        <md-slider-container>
+                            <md-slider exclass="nsg" mark="M" flex="" min="0" max="100" ng-model="color.cmyk.m" ng-change="color.cmykValueChanged()" aria-label="cmyk-m" id="cmyk-m-slider">
+                            </md-slider>
+                        </md-slider-container>
+                        <md-input-container>
+                            <input class="nsg-edit-input" ng-model="color.cmyk.m" ng-change="color.cmykValueChanged(true)" /><span style="margin-left:1px">%</span>
+                        </md-input-container>
+                        <md-slider-container>
+                            <md-slider exclass="nsg" mark="Y" flex="" min="0" max="100" ng-model="color.cmyk.y" ng-change="color.cmykValueChanged()" aria-label="cmyk-y" id="cmyk-y-slider">
+                            </md-slider>
+                        </md-slider-container>
+                        <md-input-container>
+                            <input class="nsg-edit-input" ng-model="color.cmyk.y" ng-change="color.cmykValueChanged(true)" /><span style="margin-left:1px">%</span>
+                        </md-input-container>
+                        <md-slider-container>
+                            <md-slider exclass="nsg" mark="K" flex="" min="0" max="100" ng-model="color.cmyk.k" ng-change="color.cmykValueChanged()" aria-label="cmyk-k" id="cmyk-k-slider">
+                            </md-slider>
+                        </md-slider-container>
+                        <md-input-container>
+                            <input class="nsg-edit-input" ng-model="color.cmyk.k" ng-change="color.cmykValueChanged(true)" /><span style="margin-left:1px">%</span>
+                        </md-input-container>
+                    </md-content>
+                </md-tab>
+                <md-tab label="RGB">
+                    <md-content class="md-padding">
+                        <md-slider-container>
+                            <md-slider exclass="nsg" mark="R" flex="" min="0" max="100" ng-model="color.rgb.r" ng-change="color.rgbValueChange()" aria-label="rgb-r" id="rgb-r-slider">
+                            </md-slider>
+                        </md-slider-container>
+                        <md-input-container>
+                            <input class="nsg-edit-input" ng-model="color.rgb.r" ng-change="color.rgbValueChange(true)" /><span style="margin-left:1px">%</span>
+                        </md-input-container>
+                        <md-slider-container>
+                            <md-slider exclass="nsg" mark="G" flex="" min="0" max="100" ng-model="color.rgb.g" ng-change="color.rgbValueChange()" aria-label="rgb-g" id="rgb-g-slider">
+                            </md-slider>
+                        </md-slider-container>
+                        <md-input-container>
+                            <input class="nsg-edit-input" ng-model="color.rgb.g" ng-change="color.rgbValueChange(true)" /><span style="margin-left:1px">%</span>
+                        </md-input-container>
+                        <md-slider-container>
+                            <md-slider exclass="nsg" mark="B" flex="" min="0" max="100" ng-model="color.rgb.b" ng-change="color.rgbValueChange()" aria-label="rgb-b" id="rgb-b-slider">
+                            </md-slider>
+                        </md-slider-container>
+                        <md-input-container>
+                            <input class="nsg-edit-input" ng-model="color.rgb.b" ng-change="color.rgbValueChange(true)" /><span style="margin-left:1px">%</span>
+                        </md-input-container>
+                    </md-content>
+                </md-tab>
+                <md-tab label="HSB">
+                    <md-content class="md-padding">
+                        <md-slider-container>
+                            <md-slider exclass="nsg" mark="H" flex="" min="0" max="359" ng-model="color.hsb.h" ng-change="color.hsbValueChange()" aria-label="hsb-h" id="hsb-h-slider">
+                            </md-slider>
+                        </md-slider-container>
+                        <md-input-container>
+                            <input class="nsg-edit-input" ng-model="color.hsb.h" ng-change="color.hsbValueChange(true)" /><span style="margin-left:2px"><span class="icon-degree">O</span></span>
+                        </md-input-container>
+                        <md-slider-container>
+                            <md-slider exclass="nsg" mark="S" flex="" min="0" max="100" ng-model="color.hsb.s" ng-change="color.hsbValueChange()" aria-label="hsb-s" id="hsb-s-slider">
+                            </md-slider>
+                        </md-slider-container>
+                        <md-input-container>
+                            <input class="nsg-edit-input" ng-model="color.hsb.s" ng-change="color.hsbValueChange(true)" /><span style="margin-left:1px">%</span>
+                        </md-input-container>
+                        <md-slider-container>
+                            <md-slider exclass="nsg" mark="B" flex="" min="0" max="100" ng-model="color.hsb.b" ng-change="color.hsbValueChange()" aria-label="hsb-b" id="hsb-b-slider">
+                            </md-slider>
+                        </md-slider-container>
+                        <md-input-container>
+                            <input class="nsg-edit-input" ng-model="color.hsb.b" ng-change="color.hsbValueChange(true)" /><span style="margin-left:1px">%</span>
+                        </md-input-container>
+                    </md-content>
+                </md-tab>
+                <md-tab label="HEX">
+                    <md-content class="md-padding hex-input-container">
+                        <md-input-container>
+                            <input class="hex-input" ng-model="color.hex" ng-change="color.hexValueChanged()" />
+                        </md-input-container>
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+        </md-content>
+    </div>
+
+</div>

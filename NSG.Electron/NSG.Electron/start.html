@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html ng-app="NotSoGrey" style="background-color: #1ca32d;">
+<head>
+    <meta charset="UTF-8">
+    <title>Not So Grey</title>
+    <link rel="stylesheet" href="dist/css/app.min.css" />
+    <script type="text/javascript" src="lib/angular.min.js"></script>
+    <script type="text/javascript" src="dist/js/configs/start.js"></script>
+</head>
+<body class="start"
+      ng-controller="StartController as start"
+      ng-class="{'dragger': start.enableDrag}"
+      ng-keydown="start.keyDown($event)"
+      ng-keyup="start.keyUp($event)">
+    <div class="dragger" ng-mouseenter="start.mouseEnter()" ng-mouseleave="start.mouseLeave()">
+        <div class="area" ng-show="start.showDragger" ></div>
+    </div>
+    <div class="animator" ng-click="start.launchMain()">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <svg class="square" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+             width="100px" height="100px" xml:space="preserve">
+            <path class="path" fill="none" stroke="#fff" stroke-width="3" stroke-miterlimit="5" d="M20,20 L20,70 L70,70 L70,20 L19,20" />
+        </svg>
+    </div>
+</body>
+</html>
