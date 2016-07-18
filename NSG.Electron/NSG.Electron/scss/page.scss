@@ -457,11 +457,28 @@ body {
     }
 
     &.overflowHid {
-        overflow-y: hidden;
+        overflow: hidden;
     }
 
     canvas {
         opacity: 1;
+        position: absolute;
+        top: 0;
+
+        &.before {
+            left: -340px;
+            z-index: 2;
+        }
+
+        &.current {
+            left: 0;
+            z-index: 1;
+        }
+
+        &.after {
+            left: 340px;
+            z-index: 2;
+        }
 
         &.ng-hide-add,
         &.ng-hide-remove {
@@ -869,6 +886,7 @@ body {
     margin-top: -40px;
     transition: background 0.3s ease-in-out 0s;
     outline: none;
+    z-index: 3;
 
     &.anim {
         transition: top 0.3s ease-in-out 0s;

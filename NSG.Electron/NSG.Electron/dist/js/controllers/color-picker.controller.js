@@ -38,27 +38,48 @@
         });
     }
 
-    self.canvas = { id: _.uniqueId('canvasPicker'), top: null, instance: null, ctx: null };
-    self.canvasId = _.uniqueId('canvasPicker');
+    self.canvas = { id: _.uniqueId('canvasPicker'), top: null, instance: null, ctx: null, instanceBefore: null, instanceAfter: null, ctxBefore : null, ctxAfter : null };
+    self.canvasIdBefore = _.uniqueId('canvasPicker');
+    self.canvasIdCurrent = _.uniqueId('canvasPicker');
+    self.canvasIdAfter = _.uniqueId('canvasPicker');
 
     self.init = function () {
         self.origColorPrimary = self.color;
         var _height = self.window.innerHeight;
         var _width = self.window.innerWidth;
 
-        self.canvas.instance = document.getElementById(self.canvasId);
-        self.canvas.instance.height = _height - 48;
-        self.canvas.instance.width = _width;
+        self.canvas.instance = document.getElementById(self.canvasIdCurrent);
+        self.canvas.instanceBefore = document.getElementById(self.canvasIdBefore);
+        self.canvas.instanceAfter = document.getElementById(self.canvasIdAfter);
+        self.canvas.instance.height = self.canvas.instanceBefore.height = self.canvas.instanceAfter.height = _height - 48;
+        self.canvas.instance.width = self.canvas.instanceBefore.width = self.canvas.instanceAfter.width = _width;
 
         self.canvas.ctx = self.canvas.instance.getContext("2d");
-        var _grd = self.canvas.ctx.createLinearGradient(0, 0, 0, self.canvas.instance.height);
+        self.canvas.ctxBefore = self.canvas.instanceBefore.getContext("2d");
+        self.canvas.ctxAfter = self.canvas.instanceAfter.getContext("2d");
 
+        var _grd = self.canvas.ctx.createLinearGradient(0, 0, 0, self.canvas.instance.height);
         _grd.addColorStop(0, "white");
         _grd.addColorStop(0.5, tinycolor(self.color).toRgbString());
         _grd.addColorStop(1, "black");
-
         self.canvas.ctx.fillStyle = _grd;
         self.canvas.ctx.fillRect(0, 0, _width, self.canvas.instance.height);
+
+        _grd = self.canvas.ctxBefore.createLinearGradient(0, 0, 0, self.canvas.instanceBefore.height);
+        _grd.addColorStop(0, "white");
+        _grd.addColorStop(0.5, tinycolor(self.shared.getPreviousHueHex(self.color)).toRgbString());
+        _grd.addColorStop(1, "black");
+        self.canvas.ctxBefore.fillStyle = _grd;
+        self.canvas.ctxBefore.fillRect(0, 0, _width, self.canvas.instanceBefore.height);
+
+        _grd = self.canvas.ctxAfter.createLinearGradient(0, 0, 0, self.canvas.instanceAfter.height);
+        _grd.addColorStop(0, "white");
+        _grd.addColorStop(0.5, tinycolor(self.shared.getNextHueHex(self.color)).toRgbString());
+        _grd.addColorStop(1, "black");
+        self.canvas.ctxAfter.fillStyle = _grd;
+        self.canvas.ctxAfter.fillRect(0, 0, _width, self.canvas.instanceAfter.height);
+
+
         self.canvas.top = self.canvas.instance.height / 2;
         self.currenTopPosition = self.canvas.top;
         self.getBadgeColor();
@@ -73,7 +94,7 @@
     }
 
     self.getBadgeColor = function () {
-        var _imgData = document.getElementById(self.canvasId).getContext("2d").getImageData(self.canvas.instance.width / 2, self.currenTopPosition, 1, 1).data;
+        var _imgData = document.getElementById(self.canvasIdCurrent).getContext("2d").getImageData(self.canvas.instance.width / 2, self.currenTopPosition, 1, 1).data;
         var _rgb = { r: _imgData[0], g: _imgData[1], b: _imgData[2] };
         self.badgeColor = tinycolor(_rgb).toHexString();
         self.badgeForeColor = self.shared.getForegrundContrastedColor(self.badgeColor);
