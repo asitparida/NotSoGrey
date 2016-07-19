@@ -1,7 +1,7 @@
-﻿angular.module('NotSoGrey', [])
+﻿angular.module('NotSoGrey', ['hmTouchEvents'])
 .controller('CameraController', ['$timeout', function ($timeout) {
     var self = this;
-
+    self.lastPos = {};
     let electron = require('electron');
     let desktopCapturer = electron.desktopCapturer;
     let _currWindow = electron.remote.getCurrentWindow();
@@ -12,6 +12,7 @@
     $timeout(function () {
         video = document.querySelector('video');
         canvas = document.querySelector('canvas');
+        cursor = document.getElementById('nsg_canvas_cursor');
         canvas.addEventListener('click', function (evt) {
             var mousePos = getMousePos(canvas, evt);
             var message = 'Mouse position: ' + mousePos.x + ',' + mousePos.y;
@@ -26,14 +27,13 @@
             types: ['screen']
         }, (error, sources) => {
             if (error) throw error;
-
+            console.log(sources);
             for (let i = 0; i < sources.length; ++i) {
                 navigator.webkitGetUserMedia({
                     audio: false,
                     video: {
                         mandatory: {
-                            chromeMediaSource: 'desktop',
-                            chromeMediaSourceId: sources[i].id,
+                            chromeMediaSource: 'screen',
                             minWidth: self.dimensions.width,
                             maxWidth: self.dimensions.width,
                             minHeight: self.dimensions.height,
@@ -59,7 +59,7 @@
                 localStream.getVideoTracks()[0].stop();
                 electron.ipcRenderer.send('capture-desktop-ready');
             }, 500);
-        }, 100);
+        }, 200);
     }
 
     function getMousePos(canvas, evt) {
@@ -74,6 +74,20 @@
         console.log(e);
     }
 
+    self.process = function () {
+        var _imgData = canvas.getContext("2d").getImageData(self.lastPos.x, self.lastPos.y, 1, 1).data;
+        var _rgb = { r: _imgData[0], g: _imgData[1], b: _imgData[2] };
+        electron.ipcRenderer.send('start-main-data', tinycolor(_rgb).toHexString());
+    }
+
+    self.pan = function (e) {
+        if (e.pointerType == 'touch') {
+            var cooridnates = e.center;
+            cursor.style.left = cooridnates.x + 'px';
+            cursor.style.top = cooridnates.y + 'px';
+            self.lastPos = cooridnates;
+        }
+    }
 
     self.launchMain = function () {
         let electron = require('electron');
