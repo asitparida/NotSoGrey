@@ -165,8 +165,6 @@
     <Content Include="fonts\quicksand\Quicksand-Regular.ttf" />
     <Content Include="fonts\quicksand\Quicksand-Regular.woff" />
     <Content Include="dist\js\jsons\themes-popular.json" />
-    <Content Include="releases\alpha\NotSoGrey-win32-ia32.zip" />
-    <Content Include="releases\alpha\NotSoGrey-win32-x64.zip" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
