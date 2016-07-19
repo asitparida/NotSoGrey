@@ -86,6 +86,7 @@
 
 
         self.canvas.top = self.canvas.instance.height / 2;
+        document.getElementById('id_cardPannableContent').style.top = self.canvas.top + 'px';
         self.currenTopPosition = self.canvas.top;
         self.getBadgeColor();
         document.getElementById('id_cardPannableContent').focus();
@@ -118,6 +119,7 @@
 
     self.resetColor = function () {
         self.canvas.top = self.canvas.instance.height / 2;
+        document.getElementById('id_cardPannableContent').style.top = self.canvas.top + 'px';
         self.currenTopPosition = self.canvas.top;
         self.getBadgeColor();
     }
@@ -163,6 +165,7 @@
         else if (_newTop < 40) {
             _newTop = 40;
         }
+        document.getElementById('id_cardPannableContent').style.top = _newTop + 'px';
         self.canvas.top = _newTop;
         self.currenTopPosition = self.canvas.top;
         self.getBadgeColor();
