@@ -3,7 +3,8 @@
     var self = this;
     self.launchMain = function () {
         let electron = require('electron');
-        electron.ipcRenderer.send('start-main');
+        //electron.ipcRenderer.send('start-main');
+        electron.ipcRenderer.send('start-capture');
     }
     self.mouseEnter = function () {
         self.showDragger = true;

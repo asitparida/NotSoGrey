@@ -374,6 +374,19 @@ body {
     z-index: 999;
 }
 
+#nsg_camera_canvas {
+    cursor: url(../../images/app_cursor.png) 25 25, auto;
+}
+
+/*.icon-cursor {
+    height: 50px;
+    width: 50px;
+    background-image: url(../../images/app_cursor.png);
+    position: absolute;
+    top: 0;
+    left: 0;
+}*/
+
 .nsg-app-nav {
     background-color: #000;
     height: 48px;
@@ -489,8 +502,8 @@ body {
             opacity: 0;
         }
 
-        &.anim{
-            transition:left 0.3s linear 0s;
+        &.anim {
+            transition: left 0.3s linear 0s;
         }
     }
 }
@@ -890,7 +903,6 @@ body {
     margin-top: -40px;
     outline: none;
     z-index: 3;
-
     /*&.anim {
         transition: top 0.3s ease-in-out 0s;
     }*/
