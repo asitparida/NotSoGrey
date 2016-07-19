@@ -106,7 +106,9 @@ electron.ipcMain.on('asynchronous-unregister', (event, arg) => {
 electron.ipcMain.on('start-main', (event, arg) => {
     readyToQuit = false;
     if (!mainWindow || mainWindow == null) {
-        //createMainWindow()
+        cameraWindow.close();
+        cameraWindow = null;
+        createMainWindow()
         //createCameraWindow()
     }
     else
@@ -114,6 +116,13 @@ electron.ipcMain.on('start-main', (event, arg) => {
     if (startWindow) {
         startWindow.hide();
     }
+});
+
+electron.ipcMain.on('back-to-start', (event, arg) => {
+    cameraWindow.close();
+    cameraWindow = null;
+    startWindow.show();
+    createCameraWindow();
 });
 
 electron.ipcMain.on('start-capture', (event, arg) => {

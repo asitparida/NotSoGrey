@@ -89,6 +89,16 @@
         }
     }
 
+    self.back = function () {
+        let electron = require('electron');
+        electron.ipcRenderer.send('back-to-start');
+    }
+
+    self.skipAhead = function () {
+        let electron = require('electron');
+        electron.ipcRenderer.send('start-main');
+    }
+
     self.launchMain = function () {
         let electron = require('electron');
         electron.ipcRenderer.send('start-main');
