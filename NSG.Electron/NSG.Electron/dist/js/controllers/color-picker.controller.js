@@ -169,12 +169,14 @@
     }
 
     self.panhorz = function (e, type) {
-        if (type == 'right') {
+        if (type == 'right' || (type == 'left' && self.panRightStart == true)) {
+            if (self.panRightStart == false) self.panRightStart = true;
             self.initializeCardPanElementBefore();
             var _newLeft = self.leftBeforePanForBefore + (parseInt(e.deltaX) || 0);
             self.canvas.leftBefore = _newLeft;
         }
-        else if (type == 'left') {
+        else if (type == 'left' || (type == 'right' && self.panLeftStart == true)) {
+            if (self.panLeftStart == false) self.panLeftStart = true;
             self.initializeCardPanElementAfter();
             var _newLeft = self.leftBeforePanForAfter + (parseInt(e.deltaX) || 0);
             self.canvas.leftAfter = _newLeft;
@@ -182,14 +184,25 @@
     }
 
     self.panHorzEnd = function (e) {
+        var _skipBefore = _skipAfter = false;
         if (self.canvas.leftBefore >= -170) {
-            self.init(self.canvas.colorBefore);            
+            self.init(self.canvas.colorBefore);
+            _skipBefore = true;
         }
         if (self.canvas.leftAfter <= 170) {
             self.init(self.canvas.colorAfter);
+            _skipAfter = true;
         }
+        if (!_skipBefore) document.getElementById(self.canvasIdBefore).className += ' anim';
+        if (!_skipAfter) document.getElementById(self.canvasIdAfter).className += ' anim';
         self.canvas.leftBefore = -340;
         self.canvas.leftAfter = 340;
+        self.panLeftStart = false;
+        self.panRightStart = false;
+        $timeout(function () {
+            document.getElementById(self.canvasIdBefore).className = document.getElementById(self.canvasIdBefore).className.replace(' anim', '');
+            document.getElementById(self.canvasIdAfter).className = document.getElementById(self.canvasIdAfter).className.replace(' anim', '');
+        }, 200);
     }
 
     self.mouseWheelUp = function () {
