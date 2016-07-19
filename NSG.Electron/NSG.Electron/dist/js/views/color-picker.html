@@ -13,11 +13,11 @@
          hm-panleft="color.panhorz($event, 'left')"
          hm-panright="color.panhorz($event, 'right')"
          hm-panend="color.panHorzEnd($event)"
-         hm-recognizer-options='[{"type":"pan","threshold":10,"pointers": 0, "directions":"DIRECTION_ALL"}]'>
+         hm-recognizer-options='[{"type":"pan","threshold":5,"pointers": 0, "directions":"DIRECTION_ALL"}]'>
         <canvas class="before" ng-attr-id="{{color.canvasIdBefore}}" ng-show="color.showElements" ng-style="{'left': color.canvas.leftBefore + 'px'}"></canvas>
         <canvas class="current" ng-attr-id="{{color.canvasIdCurrent}}" ng-show="color.showElements"></canvas>
         <canvas class="after" ng-attr-id="{{color.canvasIdAfter}}" ng-show="color.showElements" ng-style="{'left': color.canvas.leftAfter + 'px'}"></canvas>
-        <div class="colorHighlighter" ng-class="{'anim': color.animTop}" ng-style="{'top': color.canvas.top + 'px', 'background-color': color.badgeColor, 'border-color': color.badgeForeColor }" id="id_cardPannableContent" tabindex="0" ng-keyup="color.keyUp($event)" ng-show="color.showElements && color.showBadge">
+        <div class="colorHighlighter" ng-class="{'anim': color.animTop}" ng-style="{'background-color': color.badgeColor, 'border-color': color.badgeForeColor }" id="id_cardPannableContent" tabindex="0" ng-keyup="color.keyUp($event)" ng-show="color.showElements && color.showBadge">
             <label class="nsg-color-shade-name" ng-bind="color.badgeColor" ng-style="{'color': color.badgeForeColor}"></label>
             <i class="icon icon-targetFixedFilled nsg-primary-shade opac1" ng-show="true" ng-style="{'background-color': color.origColorPrimary}" ng-click="color.resetColor()"></i>
         </div>
