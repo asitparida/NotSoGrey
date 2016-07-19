@@ -20,7 +20,7 @@ function createMainWindow() {
     let posX = waSize.width - 340 - 15;
     let posY = waSize.height - 540 - 15;
 
-    mainWindow = new BrowserWindow({ width: 340, height: 540, x: posX, y: posY, icon: 'images/icon@2x.png', resizable: false, movable: true, minimizable: false, maximizable: false, alwaysOnTop: true, frame: false, backgroundColor: '#1ca32d', title: 'Not So Grey', show: false });
+    mainWindow = new BrowserWindow({ width: 340, height: 540, x: posX, y: posY, icon: 'images/icon@2x.ico', resizable: false, movable: true, minimizable: false, maximizable: false, alwaysOnTop: true, frame: false, backgroundColor: '#1ca32d', title: 'Not So Grey', show: false });
 
     mainWindow.activeColor = '#3498db';
 
@@ -55,7 +55,7 @@ function createStartWindow() {
     let posX = waSize.width - 120 - 15;
     let posY = waSize.height - 120 - 15;
 
-    startWindow = new BrowserWindow({ width: 120, height: 120, x: posX, y: posY, icon: 'images/icon@2x.png', resizable: false, movable: true, minimizable: false, maximizable: false, alwaysOnTop: true, frame: false, backgroundColor: '#231f20', title: 'Not So Grey', show: false });
+    startWindow = new BrowserWindow({ width: 120, height: 120, x: posX, y: posY, icon: 'images/icon@2x.ico', resizable: false, movable: true, minimizable: false, maximizable: false, alwaysOnTop: true, frame: false, backgroundColor: '#231f20', title: 'Not So Grey', show: false });
 
     // and load the index.html of the app.
     startWindow.loadURL('file://' + __dirname + '/start.html');
@@ -284,4 +284,4 @@ electron.ipcMain.on('get-dribbble', (event, arg) => {
 
 
 //["https://d13yacurqjgara.cloudfront.net/users/275149/screenshots/2831723/maplooper_1x.png", "https://d13yacurqjgara.cloudfront.net/users/698732/screenshots/2831032/004_1x.png", "https://d13yacurqjgara.cloudfront.net/users/124800/screenshots/2830714/workspace_1x.jpg", "https://d13yacurqjgara.cloudfront.net/users/14224/screenshots/2830043/03_1x.png", "https://d13yacurqjgara.cloudfront.net/users/159078/screenshots/2829616/landing-joined_1x.png", "https://d13yacurqjgara.cloudfront.net/users/159078/screenshots/2829606/signup-joined_1x.png", "https://d13yacurqjgara.cloudfront.net/users/159078/screenshots/2829591/checkout-joined_1x.png", "https://d13yacurqjgara.cloudfront.net/users/361038/screenshots/2829283/400.jpg", "https://d13yacurqjgara.cloudfront.net/users/790168/screenshots/2829055/dk_currency_1x.jpg", "https://d13yacurqjgara.cloudfront.net/users/261966/screenshots/2828771/untitled-1.png", "https://d13yacurqjgara.cloudfront.net/users/970944/screenshots/2827706/dribbble_0-60_1x.gif", "https://d13yacurqjgara.cloudfront.net/users/17255/screenshots/2826939/kaleidoscope_1x.png"]
-//"package": "electron-packager . --platform=win32 --arch=all --prune --asar --out=releases/alpha"
+//"package": "electron-packager . --platform=win32 --arch=x64 --prune --asar --out=releases/alpha --icon=images/icon@2x.ico"
