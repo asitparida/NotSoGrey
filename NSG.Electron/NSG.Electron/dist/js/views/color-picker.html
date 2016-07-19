@@ -13,7 +13,7 @@
          hm-panleft="color.panhorz($event, 'left')"
          hm-panright="color.panhorz($event, 'right')"
          hm-panend="color.panHorzEnd($event)"
-         hm-recognizer-options='[{"type":"pan","threshold":10,"pointers": 0, "directions":"DIRECTION_ALL"}]'>
+         hm-recognizer-options='[{"type":"pan","threshold":5,"pointers": 0, "directions":"DIRECTION_ALL"}]'>
         <canvas class="before" ng-attr-id="{{color.canvasIdBefore}}" ng-show="color.showElements" ng-style="{'left': color.canvas.leftBefore + 'px'}"></canvas>
         <canvas class="current" ng-attr-id="{{color.canvasIdCurrent}}" ng-show="color.showElements"></canvas>
         <canvas class="after" ng-attr-id="{{color.canvasIdAfter}}" ng-show="color.showElements" ng-style="{'left': color.canvas.leftAfter + 'px'}"></canvas>

@@ -258,11 +258,11 @@ body {
                     }
 
                     50% {
-                        -moz-transform: scale(1.05);
-                        -ms-transform: scale(1.05);
-                        -o-transform: scale(1.05);
-                        -webkit-transform: scale(1.05);
-                        transform: scale(1.05);
+                        -moz-transform: scale(1.1);
+                        -ms-transform: scale(1.1);
+                        -o-transform: scale(1.1);
+                        -webkit-transform: scale(1.1);
+                        transform: scale(1.1);
                         opacity: 1;
                     }
 
@@ -420,7 +420,7 @@ body {
 
         .icon-container {
             color: #fff;
-            opacity: 0.50;
+            opacity: 0.85;
             display: inline-block;
             width: 48px;
             height: 48px;
