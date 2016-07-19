@@ -16,8 +16,14 @@
     <div class="icon-cursor" id="nsg_canvas_cursor"></div>
     <div class="nsg-app-nav" style="float:left;">
         <div class="icon-container-holders">
-            <div class="nsg-action-holder" style="width:100%;" ng-click="camera.process()">
+            <div class="nsg-action-holder" style="width:33%;" ng-click="camera.back()">
+                <div class="icon-container w100 "><i class="icon icon-png back"></i></div>
+            </div>
+            <div class="nsg-action-holder" style="width:33%;" ng-click="camera.process()">
                 <div class="icon-container w100 "><i class="icon icon-png accept"></i></div>
+            </div>
+            <div class="nsg-action-holder" style="width:33%;" ng-click="camera.skipAhead()">
+                <div class="icon-container w100 "><i class="icon icon-app-color-picker"></i></div>
             </div>
         </div>
     </div>
