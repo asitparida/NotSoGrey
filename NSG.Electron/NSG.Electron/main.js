@@ -118,6 +118,7 @@ electron.ipcMain.on('start-main', (event, arg) => {
 
 electron.ipcMain.on('start-capture', (event, arg) => {
     cameraWindow.webContents.send('capture-desktop');
+    startWindow.hide();
 });
 
 electron.ipcMain.on('close-main', (event, arg) => {

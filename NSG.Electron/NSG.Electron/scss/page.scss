@@ -378,14 +378,16 @@ body {
     cursor: url(../../images/app_cursor.png) 25 25, auto;
 }
 
-/*.icon-cursor {
+.icon-cursor {
     height: 50px;
     width: 50px;
+    margin-left: -25px;
+    margin-top: -25px;
     background-image: url(../../images/app_cursor.png);
     position: absolute;
-    top: 0;
-    left: 0;
-}*/
+    top: -100px;
+    left: -100px;
+}
 
 .nsg-app-nav {
     background-color: #000;
