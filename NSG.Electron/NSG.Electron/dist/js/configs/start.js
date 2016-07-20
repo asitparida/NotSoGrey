@@ -1,6 +1,7 @@
 ﻿angular.module('NotSoGrey', [])
 .controller('StartController', ['$scope', function (scope) {
     var self = this;
+    self.keyboardLaunch = false;
     var electron;
     try {
         electron = require('electron');
