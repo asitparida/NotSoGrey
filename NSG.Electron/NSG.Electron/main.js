@@ -5,19 +5,22 @@ const BrowserWindow = electron.BrowserWindow;
 
 let mainWindow;
 let startWindow;
+let launchWindow;
 let cameraWindow;
 
 let readyToQuit = true;
 let forceShow = false;
 let activeColor;
 
-function createMainWindow(color) {
+function createMainWindow(color, skipShades) {
     activeColor = color || '#0073c6';
+    skipShades = skipShades || false;
     let waSize = electron.screen.getPrimaryDisplay().workAreaSize;
     let posX = waSize.width - 340 - 15;
     let posY = waSize.height - 540 - 15;
     mainWindow = new BrowserWindow({ width: 340, height: 540, x: posX, y: posY, icon: 'images/icon@2x.ico', resizable: false, movable: true, minimizable: false, maximizable: false, alwaysOnTop: true, frame: false, backgroundColor: '#1ca32d', title: 'Not So Grey', show: false });
     mainWindow.activeColor = activeColor;
+    mainWindow.skipShades = skipShades;
     mainWindow.loadURL('file://' + __dirname + '/index.html')
     //mainWindow.webContents.openDevTools()
     mainWindow.on('closed', function () {
@@ -25,10 +28,10 @@ function createMainWindow(color) {
             mainWindow = null;
             app.quit();
         }
-    })
+    });
     mainWindow.once('ready-to-show', () => {
         readyToQuit = true;
-        mainWindow.show()
+        mainWindow.show();
     })
 }
 
@@ -66,7 +69,29 @@ function createStartWindow() {
     })
 }
 
-app.on('ready', createStartWindow)
+
+function createLaunchWindow() {
+    let waSize = electron.screen.getPrimaryDisplay().workAreaSize;
+    let posX = waSize.width - 240 - 15;
+    let posY = waSize.height - 60 - 15;
+    launchWindow = new BrowserWindow({ width: 240, height: 60, x: posX, y: posY, icon: 'images/icon@2x.ico', resizable: false, movable: true, minimizable: false, maximizable: false, alwaysOnTop: true, frame: false, backgroundColor: '#231f20', title: 'Not So Grey', show: false });
+    launchWindow.loadURL('file://' + __dirname + '/launch.html');
+    //launchWindow.webContents.openDevTools()
+    launchWindow.on('closed', function () {
+        if (process.platform !== 'darwin') {
+            launchWindow = null;
+            app.quit();
+        }
+    })
+    launchWindow.once('ready-to-show', () => {
+        readyToQuit = true;
+        launchWindow.show();
+        createCameraWindow();
+    })
+}
+
+//app.on('ready', createStartWindow)
+app.on('ready', createLaunchWindow)
 
 app.on('window-all-closed', function () {
     if (process.platform !== 'darwin') {
@@ -81,16 +106,32 @@ app.on('window-all-closed', function () {
 //        createMainWindow()
 //    }
 //})
+//
+
+electron.ipcMain.on('close-all', (event, arg) => {
+    if (process.platform !== 'darwin') {
+        app.quit()
+    }
+});
+
+electron.ipcMain.on('stream-ready-for-capture', (event, arg) => {
+    //console.log('stream-ready-for-capture');
+    if (launchWindow) {
+        launchWindow.webContents.send('stream-ready-for-capture-enabled');
+    }
+});
 
 electron.ipcMain.on('capture-desktop-ready', (event, arg) => {
     readyToQuit = true;
+    //console.log('capture-desktop-ready');
     cameraWindow.show();
 });
 
 electron.ipcMain.on('start-main-data', (event, arg) => {
+    //console.log('start-main-data');
     cameraWindow.close();
     cameraWindow = null;
-    createMainWindow(arg);
+    createMainWindow(arg, false);
 });
 
 electron.ipcMain.on('asynchronous-message', (event, arg) => {
@@ -106,28 +147,26 @@ electron.ipcMain.on('asynchronous-unregister', (event, arg) => {
 electron.ipcMain.on('start-main', (event, arg) => {
     readyToQuit = false;
     if (!mainWindow || mainWindow == null) {
-        cameraWindow.close();
-        cameraWindow = null;
-        createMainWindow()
-        //createCameraWindow()
+        createMainWindow(null, true)
     }
     else
         mainWindow.show();
-    if (startWindow) {
-        startWindow.hide();
+    if (launchWindow) {
+        launchWindow.hide();
     }
 });
 
 electron.ipcMain.on('back-to-start', (event, arg) => {
     cameraWindow.close();
     cameraWindow = null;
-    startWindow.show();
+    launchWindow.show();
     createCameraWindow();
 });
 
 electron.ipcMain.on('start-capture', (event, arg) => {
+    //console.log('start-capture');
     cameraWindow.webContents.send('capture-desktop');
-    startWindow.hide();
+    launchWindow.hide();
 });
 
 electron.ipcMain.on('close-main', (event, arg) => {
@@ -136,11 +175,11 @@ electron.ipcMain.on('close-main', (event, arg) => {
         mainWindow.close();
         mainWindow = null;
     }
-    if (startWindow === 'undefined' || !startWindow || startWindow == null) {
-        createStartWindow();
+    if (launchWindow === 'undefined' || !launchWindow || launchWindow == null) {
+        createLaunchWindow();
     }
     else {
-        startWindow.show();
+        launchWindow.show();
         createCameraWindow();
     }
 });

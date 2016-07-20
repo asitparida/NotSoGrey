@@ -3,7 +3,16 @@
 .run(['$state', '$timeout', init]);
 
 function init($state, $timeout) {
-    $state.go('ColorPicker');
+    try {
+        let electron = require('electron');
+        let _currWindow = electron.remote.getCurrentWindow();
+        if(_currWindow.skipShades)
+            $state.go('ColorDetails.View');
+        else
+            $state.go('ColorPicker');
+    } catch (e) {
+        $state.go('ColorPicker');
+    }
 }
 
 function getViewPath(tag) {
