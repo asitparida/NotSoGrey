@@ -95,6 +95,59 @@ body {
         height: 120px;
         position: relative;
 
+        &.launch {
+            width: 240px;
+
+            .icon-hodlers {
+                width: 100%;
+                height: 60px;
+
+                .nsg-action-holder {
+                    width: 60px;
+                    height: 60px;
+                    float: left;
+
+                    &.disabled {
+                        opacity: 0.33;
+                        cursor: none;
+                        pointer-events: none;
+                    }
+
+                    .icon-container {
+                        height: 60px;
+                        width: 60px;
+
+                        &.h50 {
+                            height: 30px;
+                            float: none;
+                        }
+
+                        .icon {
+                            height: 24px;
+                            width: 24px;
+                            position: relative;
+                            top: 18px;
+                            /*&.jumptoMain48 {
+                                height: 24px;
+                                width: 24px;
+                                top: 18px;
+                            }*/
+                            &.noPos {
+                                top: 2px;
+                                height: 18px;
+                                width: 18px;
+                            }
+
+                            &.h22 {
+                                height: 20px;
+                                width: 20px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         .nsg-start {
             width: 120px;
             height: 120px;
@@ -109,12 +162,13 @@ body {
         }
 
         .dragger {
+            background: rgba(0,0,0,0.15);
+
             .area {
                 -webkit-app-region: drag;
                 cursor: move;
-                background: rgba(0,0,0,0.15);
                 width: 100%;
-                height: 100%;
+                height: 50%;
                 position: absolute;
             }
 
@@ -1606,6 +1660,37 @@ body {
 
     &.copy {
         background-image: url(../../images/icon_png_copy_black.png);
+    }
+
+    &.keyboard48 {
+        background-image: url(../../images/app_keyboard_48.png);
+    }
+
+    &.colorPicker48 {
+        background-image: url(../../images/app_color_picker_48.png);
+    }
+
+    &.move48 {
+        background-image: url(../../images/app_move_48.png);
+    }
+
+    &.jumptoMain48 {
+        background-image: url(../../images/app_jump_main48.png);
+
+        &.s24 {
+            width: 24px;
+            height: 24px;
+            top: 4px;
+        }
+
+        &.reverse {
+            -moz-transform: scaleX(-1);
+            -o-transform: scaleX(-1);
+            -webkit-transform: scaleX(-1);
+            transform: scaleX(-1);
+            -ms-filter: "FlipH";
+            filter: FlipH;
+        }
     }
 }
 

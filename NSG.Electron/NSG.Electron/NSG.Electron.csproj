@@ -108,12 +108,16 @@
     <Content Include="fonts\quicksand\Quicksand-Regular.svg" />
     <Content Include="gulpfile.js" />
     <Content Include="images\app_color_picker_24.png" />
+    <Content Include="images\app_color_picker_48.png" />
     <Content Include="images\app_contrast_24.png" />
     <Content Include="images\app_cursor.png" />
     <Content Include="images\app_dribble_24.png" />
     <Content Include="images\app_icon_16.png" />
     <Content Include="images\app_icon_24.png" />
     <Content Include="images\app_icon_48_proper.png" />
+    <Content Include="images\app_jump_main48.png" />
+    <Content Include="images\app_keyboard_48.png" />
+    <Content Include="images\app_move_48.png" />
     <Content Include="images\app_theme_24.png" />
     <Content Include="images\app32.png" />
     <Content Include="images\icon%402x.ico" />
@@ -136,6 +140,7 @@
     <Content Include="images\palette_export_scss.png" />
     <Content Include="images\palette_export_svg.png" />
     <Content Include="index.html" />
+    <Content Include="launch.html" />
     <Content Include="lib\angular-animate.min.js" />
     <Content Include="lib\angular-aria.min.js" />
     <Content Include="lib\angular-material.js" />

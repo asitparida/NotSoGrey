@@ -5,9 +5,7 @@
     let electron = require('electron');
     let desktopCapturer = electron.desktopCapturer;
     let _currWindow = electron.remote.getCurrentWindow();
-    console.log(_currWindow);
     self.dimensions = { width: _currWindow.dimensionsWidth, height: _currWindow.dimensionsHeight };
-    console.log(self.dimensions);
     var video, canvas, cursor;
     $timeout(function () {
         video = document.querySelector('video');
@@ -20,14 +18,10 @@
             var _rgb = { r: _imgData[0], g: _imgData[1], b: _imgData[2] };
             electron.ipcRenderer.send('start-main-data', tinycolor(_rgb).toHexString());
         }, false);
-    }, 100);
-
-    electron.ipcRenderer.on('capture-desktop', (event, arg) => {
         desktopCapturer.getSources({
             types: ['screen']
         }, (error, sources) => {
             if (error) throw error;
-            console.log(sources);
             for (let i = 0; i < sources.length; ++i) {
                 navigator.webkitGetUserMedia({
                     audio: false,
@@ -44,22 +38,35 @@
                 return;
             }
         });
+    }, 200);
+
+    electron.ipcRenderer.on('capture-desktop', (event, arg) => {
+        self.stop = true;
+        $timeout(function () {
+            self.localStream.getVideoTracks()[0].stop();
+            electron.ipcRenderer.send('capture-desktop-ready');
+        }, 200);
     });
 
     function gotStream(stream) {
         video.src = URL.createObjectURL(stream);
-        let localStream = stream;
-
+        self.localStream = stream;
         canvas.width = self.dimensions.width;
         canvas.height = self.dimensions.height;
         var ctx = canvas.getContext('2d');
-        $timeout(function () {
+        self.stop = false;
+        drawToCanvas(ctx, video);
+        if (!self.init) {
+            self.init = true;
+            electron.ipcRenderer.send('stream-ready-for-capture');
+        }
+    }
+
+    function drawToCanvas(ctx, video) {
+        if (self.stop == false) {
             ctx.drawImage(video, 0, 0);
-            $timeout(function () {
-                localStream.getVideoTracks()[0].stop();
-                electron.ipcRenderer.send('capture-desktop-ready');
-            }, 500);
-        }, 200);
+            setTimeout(drawToCanvas, 20, ctx, video);
+        }
     }
 
     function getMousePos(canvas, evt) {
