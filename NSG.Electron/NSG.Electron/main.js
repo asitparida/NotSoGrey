@@ -13,7 +13,7 @@ let forceShow = false;
 let activeColor;
 
 function createMainWindow(color, skipShades) {
-    activeColor = color || '#0073c6';
+    activeColor = color || '#0048ba';
     skipShades = skipShades || false;
     let waSize = electron.screen.getPrimaryDisplay().workAreaSize;
     let posX = waSize.width - 340 - 15;
@@ -307,6 +307,12 @@ electron.ipcMain.on('get-dribbble', (event, arg) => {
             if (data)
                 event.sender.send('get-dribbble-reply', data);
         });
+});
+
+electron.ipcMain.on('get-hexcodename', (event, arg) => {
+    var colorName = require('color-names')[arg];
+    console.log(colorName);
+    event.sender.send('get-hexcodename-reply', colorName);
 });
 
 //["https://d13yacurqjgara.cloudfront.net/users/275149/screenshots/2831723/maplooper_1x.png", "https://d13yacurqjgara.cloudfront.net/users/698732/screenshots/2831032/004_1x.png", "https://d13yacurqjgara.cloudfront.net/users/124800/screenshots/2830714/workspace_1x.jpg", "https://d13yacurqjgara.cloudfront.net/users/14224/screenshots/2830043/03_1x.png", "https://d13yacurqjgara.cloudfront.net/users/159078/screenshots/2829616/landing-joined_1x.png", "https://d13yacurqjgara.cloudfront.net/users/159078/screenshots/2829606/signup-joined_1x.png", "https://d13yacurqjgara.cloudfront.net/users/159078/screenshots/2829591/checkout-joined_1x.png", "https://d13yacurqjgara.cloudfront.net/users/361038/screenshots/2829283/400.jpg", "https://d13yacurqjgara.cloudfront.net/users/790168/screenshots/2829055/dk_currency_1x.jpg", "https://d13yacurqjgara.cloudfront.net/users/261966/screenshots/2828771/untitled-1.png", "https://d13yacurqjgara.cloudfront.net/users/970944/screenshots/2827706/dribbble_0-60_1x.gif", "https://d13yacurqjgara.cloudfront.net/users/17255/screenshots/2826939/kaleidoscope_1x.png"]

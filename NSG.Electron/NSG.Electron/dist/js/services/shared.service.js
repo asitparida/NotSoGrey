@@ -578,6 +578,26 @@
         }
         return _defer.promise;
     }
+    
+    self.getColorName = function(color) {
+        if (_defer) _defer.reject();
+        _defer = $q.defer();
+        try {
+            if (self.electron != null) {
+                self.electron.ipcRenderer.send('get-hexcodename', tinycolor(color).toHexString());
+                self.electron.ipcRenderer.on('get-hexcodename-reply', (event, arg) => {
+                    _defer.resolve(arg || color);
+                });
+            }
+            else
+                _defer.resolve(color);
+
+        } catch (e) {
+            console.log(e);
+            _defer.resolve(color);
+        }
+        return _defer.promise;
+    }
 
     self.notifySave = function (msg) {
         var _modalInstance = self.uibModal.open({
