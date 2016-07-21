@@ -55,17 +55,19 @@
         canvas.height = self.dimensions.height;
         var ctx = canvas.getContext('2d');
         self.stop = false;
+        self.ct = 0;
         drawToCanvas(ctx, video);
-        if (!self.init) {
-            self.init = true;
-            electron.ipcRenderer.send('stream-ready-for-capture');
-        }
     }
 
     function drawToCanvas(ctx, video) {
         if (self.stop == false) {
             ctx.drawImage(video, 0, 0);
             setTimeout(drawToCanvas, 20, ctx, video);
+            self.ct = self.ct + 1;
+            if (!self.init && self.ct >= 50) {
+                self.init = true;
+                electron.ipcRenderer.send('stream-ready-for-capture');
+            }
         }
     }
 

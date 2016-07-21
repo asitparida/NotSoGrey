@@ -1,6 +1,7 @@
 ﻿angular.module('NotSoGrey', [])
 .controller('StartController', ['$scope', function (scope) {
     var self = this;
+    self.keyboardLaunch = false;
     var electron;
     try {
         electron = require('electron');
@@ -14,6 +15,12 @@
 
     electron.ipcRenderer.on('stream-ready-for-capture-enabled', (event, arg) => {
         self.canvasActivated = true;
+        if (!scope.$$phase)
+            scope.$digest();
+    });
+
+    electron.ipcRenderer.on('reset-enable-capture', (event, arg) => {
+        self.canvasActivated = false;
         if (!scope.$$phase)
             scope.$digest();
     });
