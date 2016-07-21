@@ -19,6 +19,12 @@
             scope.$digest();
     });
 
+    electron.ipcRenderer.on('reset-enable-capture', (event, arg) => {
+        self.canvasActivated = false;
+        if (!scope.$$phase)
+            scope.$digest();
+    });
+
     self.launchMain = function () {
         let electron = require('electron');
         electron.ipcRenderer.send('start-main');

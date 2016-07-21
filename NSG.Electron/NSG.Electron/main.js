@@ -159,12 +159,12 @@ electron.ipcMain.on('start-main', (event, arg) => {
 electron.ipcMain.on('back-to-start', (event, arg) => {
     cameraWindow.close();
     cameraWindow = null;
+    launchWindow.webContents.send('reset-enable-capture');
     launchWindow.show();
     createCameraWindow();
 });
 
 electron.ipcMain.on('start-capture', (event, arg) => {
-    //console.log('start-capture');
     cameraWindow.webContents.send('capture-desktop');
     launchWindow.hide();
 });
@@ -179,6 +179,7 @@ electron.ipcMain.on('close-main', (event, arg) => {
         createLaunchWindow();
     }
     else {
+        launchWindow.webContents.send('reset-enable-capture');
         launchWindow.show();
         createCameraWindow();
     }
