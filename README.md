@@ -1,2 +1,1 @@
-# NotSoGrey
-Not So Grey Color App
+<img src="NSG.Electron/site-bg.png" style="height:652px;width:960px;" />

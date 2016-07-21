@@ -5,6 +5,12 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSG.Electron", "NSG.Electron\NSG.Electron.csproj", "{BE0DC684-0A38-46D0-9632-5050F791AF57}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "static", "static", "{4E823B1A-B004-4944-838C-B81270778095}"
+	ProjectSection(SolutionItems) = preProject
+		gt-home.html = gt-home.html
+		..\..\..\..\Desktop\site-bg.png = ..\..\..\..\Desktop\site-bg.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
