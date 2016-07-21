@@ -4,11 +4,11 @@
     self.state = $state;
     self.shared = SharedService;
     var _actions = [
-            { id: 1, name: 'color-picker', icon: 'icon-png jumptoMain48 reverse s24', fn: 'app.closeApp()' },
-            { id: 2, name: 'color-picker', icon: 'icon-app-logo', fn: 'app.goColorDetails()' },
-            { id: 4, name: 'color-contrast', icon: 'icon-app-contrast', fn: 'app.goColorContrast()', active: true },
-            { id: 3, name: 'color-theme', icon: 'icon-app-theme', fn: 'app.goThemesPopular()' },
-            { id: 5, name: 'color-dribbble', icon: 'icon-app-dribbble', fn: 'app.goDribbble()' }
+            { id: 1, name: 'color-picker', icon: 'icon-png jumptoMain48 reverse s24', fn: 'app.closeApp()', title: 'Back To Launcher' },
+            { id: 2, name: 'color-picker', icon: 'icon-app-logo', fn: 'app.goColorDetails()', title: 'Color Details' },
+            { id: 4, name: 'color-contrast', icon: 'icon-app-contrast', fn: 'app.goColorContrast()', active: true, title: 'Color Contrast' },
+            { id: 3, name: 'color-theme', icon: 'icon-app-theme', fn: 'app.goThemesPopular()', title: 'Popular Themes' },
+            { id: 5, name: 'color-dribbble', icon: 'icon-app-dribbble', fn: 'app.goDribbble()', title: 'Dribbble Shots' }
     ];
     self.shared.loadActions(_actions);
     self.colorContrastModes = self.shared.colorContrastModes;

@@ -1,7 +1,7 @@
 ﻿<div class="nsg-app-nav">
     <div class="icon-container-holders">
         <div class="nsg-action-holder" ng-repeat="item in app.shared.actions" ng-style="{'width': (100 / (app.shared.actions.length) - 1) + '%'}" >
-            <app-action fn="{{item.fn}}" icon="{{item.icon}}" active="{{item.active}}"></app-action>
+            <app-action fn="{{item.fn}}" icon="{{item.icon}}" active="{{item.active}}" actitle="{{item.title}}"></app-action>
         </div>
     </div>
 </div>

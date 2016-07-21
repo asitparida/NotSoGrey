@@ -4,8 +4,8 @@
     self.state = $state;
     self.shared = SharedService;
     var _actions = [
-            { id: 1, name: 'back-72b', icon: 'icon-png back', fn: 'app.goColorDetails()' },
-            { id: 2, name: 'add', icon: 'icon-png add', fn: 'app.goThemesCreator()' }
+            { id: 1, name: 'back-72b', icon: 'icon-png back', fn: 'app.goColorDetails()', title: 'Back To Color Details' },
+            { id: 2, name: 'add', icon: 'icon-png add', fn: 'app.goThemesCreator()', title: 'Create Color Palette' }
     ];
     self.shared.loadActions(_actions);
     self.themes = [];
