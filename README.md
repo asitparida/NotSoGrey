@@ -1,1 +1,1 @@
-# <div class="banner" style:" width: 100vw;height: 50vh;background-image: url(site-bg.png);background-size: cover;"></div>
+<img src="NSG.Electron/site-bg.png" style="height:652px;width:960px;" />
