@@ -1,1 +1,3 @@
-<img src="NSG.Electron/site-bg.png" style="height:652px;width:960px;" />
+<a href="https://github.com/asitparida/NotSoGrey/releases">
+    <img src="NSG.Electron/WebSiteNew.jpg" style="height:1086px;width:1920px;" />
+</a>
