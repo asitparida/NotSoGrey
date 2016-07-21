@@ -19,7 +19,9 @@
     self.activeColor = self.color;
     self.origColor = '#ffffff'
     self.foreColor = self.shared.getForegrundContrastedColor(self.color);
-    self.name = 'Forest Green';
+    self.shared.getColorName(self.color).then(function (data) {
+        self.name = data;
+    });
     self.activeChange = false;
     self.cmyk = self.shared.getPercentageCMYK(self.color);
     self.rgb = self.shared.getPercentageRGB(self.color);
@@ -103,6 +105,9 @@
             self.hsb = self.shared.getPercentageHSB(self.activeColor);
             self.hex = self.shared.getCodeOnlyFromHexCode(self.activeColor);
             self.activeChange = false;
+            self.shared.getColorName(self.origColor).then(function (data) {
+                self.name = data;
+            });
         }
         if (e) {
             e.stopPropagation();
@@ -113,6 +118,9 @@
     self.shared.ratifyDetails = function () {
         self.activeChange = false;
         self.shared.activeColor = self.activeColor;
+        self.shared.getColorName(self.activeColor).then(function (data) {
+            self.name = data;
+        });
     }
     self.copyCMYK = function () {
         var _str = 'cmyk(CP, MP, YP, KP)';

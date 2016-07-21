@@ -12,7 +12,8 @@
   "dependencies": {
     "electron-canvas-to-buffer": "2.0.0",
     "ase-utils": "0.1.1",
-    "x-ray": "2.3.0"
+    "x-ray": "2.3.0",
+    "color-names": "2.0.0"
   },
   "devDependencies": {
     "electron-prebuilt": "1.2.6",
