@@ -29,11 +29,11 @@
         self.direction = direction || 'fwd';
         self.state.go('ColorDetails.View');
         var _actions = [
-            { id: 1, name: 'color-picker', icon: 'icon-png jumptoMain48 reverse s24', fn: 'app.closeApp()' },
-            { id: 2, name: 'color-picker', icon: 'icon-app-logo', fn: 'app.goColorDetails()', active: true },
-            { id: 4, name: 'color-contrast', icon: 'icon-app-contrast', fn: 'app.goColorContrast()' },
-            { id: 3, name: 'color-theme', icon: 'icon-app-theme', fn: 'app.goThemesPopular()' },
-            { id: 5, name: 'color-dribbble', icon: 'icon-app-dribbble', fn: 'app.goDribbble()' }
+            { id: 1, name: 'color-picker', icon: 'icon-png jumptoMain48 reverse s24', fn: 'app.closeApp()', title: 'Back To Launcher' },
+            { id: 2, name: 'color-picker', icon: 'icon-app-logo', fn: 'app.goColorDetails()', active: true, title: 'Color Details' },
+            { id: 4, name: 'color-contrast', icon: 'icon-app-contrast', fn: 'app.goColorContrast()', title: 'Color Contrast' },
+            { id: 3, name: 'color-theme', icon: 'icon-app-theme', fn: 'app.goThemesPopular()', title: 'Popular Themes' },
+            { id: 5, name: 'color-dribbble', icon: 'icon-app-dribbble', fn: 'app.goDribbble()', title: 'Dribbble Shots' }
         ];
         self.shared.loadActions(_actions);
     }
@@ -49,8 +49,8 @@
         self.direction = direction || 'fwd';
         self.state.go('ColorDetails.Edit');
         var _actions = [
-            { id: 3, name: 'accept', icon: 'icon-png accept', fn: 'app.ratifyColorDetails()' },
-            { id: 1, name: 'close', icon: 'icon-png reject', fn: 'app.revertDetails()' },
+            { id: 3, name: 'accept', icon: 'icon-png accept', fn: 'app.ratifyColorDetails()', title: 'Accept Changes' },
+            { id: 1, name: 'close', icon: 'icon-png reject', fn: 'app.revertDetails()', title: 'Revert Changes' },
         ];
         self.shared.loadActions(_actions);
     }

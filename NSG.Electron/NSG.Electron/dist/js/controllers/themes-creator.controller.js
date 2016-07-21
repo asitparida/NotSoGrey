@@ -10,9 +10,9 @@
     }
     self.shared.toggleSharePanel = self.toggleSharePanel;
     var _actions = [
-       { id: 1, name: 'back-72b', icon: 'icon-png back', fn: 'app.goThemesPopular()' },
-       { id: 1, name: 'back-72b', icon: 'icon-png shuffle', fn: 'app.createThemeShuffle()', active: false },
-       { id: 3, name: 'color-SHARE', icon: 'icon-png share', fn: 'app.shared.toggleSharePanel()' },
+       { id: 1, name: 'back-72b', icon: 'icon-png back', fn: 'app.goThemesPopular()', title: 'Back To Popular Themes' },
+       { id: 1, name: 'back-72b', icon: 'icon-png shuffle', fn: 'app.createThemeShuffle()', active: false, title: 'Shuffle Palette' },
+       { id: 3, name: 'color-SHARE', icon: 'icon-png share', fn: 'app.shared.toggleSharePanel()', title: 'Share / Export Palette' },
     ];
     self.shared.loadActions(_actions);
     self.themeGeneratorOptions = self.shared.themeGeneratorOptions;

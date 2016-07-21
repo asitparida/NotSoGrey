@@ -8,8 +8,8 @@
     self.animTop = false;
     self.showBadge = false;
     var _actions = [
-        { id: 2, name: 'accept', icon: 'icon-png accept', fn: 'app.goColorDetails()' },
-        { id: 1, name: 'close', icon: 'icon-png reject', fn: 'app.closeApp()' }
+        { id: 2, name: 'accept', icon: 'icon-png accept', fn: 'app.goColorDetails()', title:'Choose Color Shade' },
+        { id: 1, name: 'close', icon: 'icon-png reject', fn: 'app.closeApp()', title : 'Back To Launcher' }
     ];
     self.shared.loadActions(_actions);
     self.topnav = { 'isActive1': true, 'isActive2': false, 'isActive3': false };
