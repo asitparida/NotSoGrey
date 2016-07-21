@@ -87,6 +87,10 @@
     }
 
     self.goDribbble = function () {
+        if (navigator.onLine == false) {
+            self.shared.notifySave({'msg':'Failed to detect network connectivity!', 'dontBreak': true});
+            return;
+        }
         self.state.go('DribbbleShots');
     }
 

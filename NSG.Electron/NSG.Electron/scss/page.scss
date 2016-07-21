@@ -1820,6 +1820,10 @@ body {
                         word-break: break-all;
                         padding: 0 15px;
                         font-size: large;
+
+                        &.dontBreak{
+                            word-break:break-word;
+                        }
                     }
                 }
 
