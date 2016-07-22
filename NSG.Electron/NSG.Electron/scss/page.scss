@@ -432,6 +432,20 @@ body {
     z-index: 999;
 }
 
+.color-cursor{
+    height:60px;
+    width:60px;
+    border-radius:50%;
+    display:none;
+    position:absolute;
+    top:0;
+    left:0;
+
+    &.show{
+        display:block;
+    }
+}
+
 #nsg_camera_canvas {
     cursor: url(../../images/app_cursor.png) 25 25, auto;
 }

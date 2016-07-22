@@ -6,11 +6,12 @@
     let desktopCapturer = electron.desktopCapturer;
     let _currWindow = electron.remote.getCurrentWindow();
     self.dimensions = { width: _currWindow.dimensionsWidth, height: _currWindow.dimensionsHeight };
-    var video, canvas, cursor;
+    var video, canvas, cursor, colorCursor;
     $timeout(function () {
         video = document.querySelector('video');
         canvas = document.querySelector('canvas');
         cursor = document.getElementById('nsg_canvas_cursor');
+        colorCursor = document.getElementById('nsg_color_cursor');
         canvas.addEventListener('click', function (evt) {
             var mousePos = getMousePos(canvas, evt);
             var message = 'Mouse position: ' + mousePos.x + ',' + mousePos.y;
@@ -95,6 +96,10 @@
             cursor.style.left = cooridnates.x + 'px';
             cursor.style.top = cooridnates.y + 'px';
             self.lastPos = cooridnates;
+            colorCursor.style.left = cooridnates.x + 'px';
+            colorCursor.style.top = cooridnates.y + 'px';
+            if (colorCursor.classList.contains("shown") == false)
+                colorCursor.classList.add("shown");
         }
     }
 
