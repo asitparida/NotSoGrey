@@ -12,7 +12,7 @@
                             $scope.$eval($attrs.ngLongHover)
                         });
                     }
-                }, 800);
+                }, 1500);
             });
             $elm.bind('mouseleave', function (evt) {
                 $scope.longHover = false;

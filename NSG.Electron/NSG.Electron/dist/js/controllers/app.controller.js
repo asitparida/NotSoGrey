@@ -49,8 +49,8 @@
         self.direction = direction || 'fwd';
         self.state.go('ColorDetails.Edit');
         var _actions = [
-            { id: 3, name: 'accept', icon: 'icon-png accept', fn: 'app.ratifyColorDetails()', title: 'Accept Changes' },
-            { id: 1, name: 'close', icon: 'icon-png reject', fn: 'app.revertDetails()', title: 'Revert Changes' },
+            { id: 3, name: 'accept', icon: 'icon-png accept', fn: 'app.ratifyColorDetails()', title: 'Accept Changes', active: true },
+            { id: 1, name: 'close', icon: 'icon-png reject', fn: 'app.revertDetails()', title: 'Revert Changes', active: true },
         ];
         self.shared.loadActions(_actions);
     }
@@ -88,7 +88,7 @@
 
     self.goDribbble = function () {
         if (navigator.onLine == false) {
-            self.shared.notifySave({'msg':'Failed to detect network connectivity!', 'dontBreak': true});
+            self.shared.notifySave({ 'msg': 'Failed to detect network connectivity!', 'dontBreak': true });
             return;
         }
         self.state.go('DribbbleShots');
