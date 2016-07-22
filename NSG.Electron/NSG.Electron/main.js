@@ -43,7 +43,7 @@ function createCameraWindow() {
     cameraWindow.dimensionsWidth = waSize.width;
     cameraWindow.dimensionsHeight = waSize.height;
     cameraWindow.loadURL('file://' + __dirname + '/camera.html')
-    //cameraWindow.webContents.openDevTools()
+    //cameraWindow.webContents.openDevTools();
     cameraWindow.on('closed', function () {
         cameraWindow = null;
     });
@@ -72,10 +72,11 @@ function createStartWindow() {
 
 function createLaunchWindow() {
     let waSize = electron.screen.getPrimaryDisplay().workAreaSize;
-    let posX = waSize.width - 240 - 15;
+    let posX = waSize.width - 120 - 15;
     let posY = waSize.height - 60 - 15;
-    launchWindow = new BrowserWindow({ width: 240, height: 60, x: posX, y: posY, icon: 'images/icon@2x.ico', resizable: false, movable: true, minimizable: false, maximizable: false, alwaysOnTop: true, frame: false, backgroundColor: '#231f20', title: 'Not So Grey', show: false });
+    launchWindow = new BrowserWindow({ width: 120, height: 60, x: posX, y: posY, icon: 'images/icon@2x.ico', resizable: false, movable: true, minimizable: false, maximizable: false, alwaysOnTop: true, frame: false, backgroundColor: '#231f20', title: 'Not So Grey', show: false });
     launchWindow.loadURL('file://' + __dirname + '/launch.html');
+    launchWindow.expanded = false;
     //launchWindow.webContents.openDevTools()
     launchWindow.on('closed', function () {
         if (process.platform !== 'darwin') {
@@ -153,6 +154,28 @@ electron.ipcMain.on('start-main', (event, arg) => {
         mainWindow.show();
     if (launchWindow) {
         launchWindow.hide();
+    }
+});
+
+electron.ipcMain.on('expand-launch', (event, arg) => {
+    if (launchWindow.expanded == false) {
+        var _bounds = launchWindow.getBounds();
+        _bounds.width = _bounds.width + 60;
+        _bounds.x = _bounds.x - 60;
+        launchWindow.setBounds(_bounds);
+        launchWindow.webContents.send('launch-resized');
+        launchWindow.expanded = true;
+    }
+});
+
+
+electron.ipcMain.on('collapse-launch', (event, arg) => {
+    if (launchWindow.expanded == true) {
+        var _bounds = launchWindow.getBounds();
+        _bounds.width = _bounds.width - 60;
+        _bounds.x = _bounds.x + 60;
+        launchWindow.setBounds(_bounds);
+        launchWindow.expanded = false;
     }
 });
 

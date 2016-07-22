@@ -6,11 +6,12 @@
     let desktopCapturer = electron.desktopCapturer;
     let _currWindow = electron.remote.getCurrentWindow();
     self.dimensions = { width: _currWindow.dimensionsWidth, height: _currWindow.dimensionsHeight };
-    var video, canvas, cursor;
+    var video, canvas, cursor, colorCursor;
     $timeout(function () {
         video = document.querySelector('video');
         canvas = document.querySelector('canvas');
         cursor = document.getElementById('nsg_canvas_cursor');
+        colorCursor = document.getElementById('nsg_color_cursor');
         canvas.addEventListener('click', function (evt) {
             var mousePos = getMousePos(canvas, evt);
             var message = 'Mouse position: ' + mousePos.x + ',' + mousePos.y;
@@ -95,6 +96,16 @@
             cursor.style.left = cooridnates.x + 'px';
             cursor.style.top = cooridnates.y + 'px';
             self.lastPos = cooridnates;
+            var _x = cooridnates.x - 50;
+            var _y = cooridnates.y - 95;
+            _x = _x >= 0 ? _x : _x + 50 + 25;
+            colorCursor.style.left = _x + 'px';
+            colorCursor.style.top = _y + 'px';
+            var _imgData = canvas.getContext("2d").getImageData(cooridnates.x, cooridnates.y, 1, 1).data;
+            var _rgb = { r: _imgData[0], g: _imgData[1], b: _imgData[2] };
+            document.getElementById('nsg-color-cursor-fill').style.fill = tinycolor(_rgb).toHexString();
+            if (colorCursor.classList.contains("shown") == false)
+                colorCursor.classList.add("shown");
         }
     }
 

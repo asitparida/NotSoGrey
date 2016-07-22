@@ -96,16 +96,27 @@ body {
         position: relative;
 
         &.launch {
-            width: 240px;
+            width: auto;
 
             .icon-hodlers {
-                width: 100%;
+                width: auto;
                 height: 60px;
 
                 .nsg-action-holder {
                     width: 60px;
                     height: 60px;
-                    float: left;
+                    float: right;
+
+                    &.anim-fade {
+                        opacity: 1;
+                        transition: all 0.5s ease-in-out 0s;
+                        transform: translateX(0);
+
+                        &.ng-hide {
+                            opacity: 0;
+                            transform: translateX(30px);
+                        }
+                    }
 
                     &.disabled {
                         opacity: 0.33;
@@ -171,13 +182,6 @@ body {
                 height: 50%;
                 position: absolute;
             }
-
-            width: 20px;
-            height: 20px;
-            position: absolute;
-            top: 0;
-            right: 0;
-            z-index: 999;
         }
 
         .animator {
@@ -428,6 +432,26 @@ body {
     z-index: 999;
 }
 
+.color-cursor {
+    height: 60px;
+    width: 120px;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background:transparent;
+
+    path {
+        stroke:rgb(0,0,0);
+        stroke-opacity:0.33;
+        stroke-width:5px;
+    }
+
+    &.shown {
+        display: block;
+    }
+}
+
 #nsg_camera_canvas {
     cursor: url(../../images/app_cursor.png) 25 25, auto;
 }
@@ -449,6 +473,28 @@ body {
     width: 100%;
     text-align: center;
     border-top: 1px solid #000;
+
+    &.topShadow {
+        -webkit-box-shadow: 0px 0px 26px 0px rgba(0,0,0,0.18);
+        -moz-box-shadow: 0px 0px 26px 0px rgba(0,0,0,0.18);
+        box-shadow: 0px 0px 26px 0px rgba(0,0,0,0.18);
+    }
+
+    &.canvasNav {
+        background: #fff;
+        border-top-color: #fff;
+
+        .icon-container-holders {
+
+            .nsg-action-holder {
+                float: right;
+            }
+
+            .icon-container {
+                color: #303030;
+            }
+        }
+    }
 
     .icon-container-holders {
         width: 100%;
@@ -616,7 +662,7 @@ body {
         position: absolute;
         top: 50px;
         left: calc(50% - 18px);
-        opacity: 0.33;
+        opacity: 0.50;
         transition: 0.3s linear 0s;
     }
 
@@ -775,8 +821,6 @@ body {
                 padding-top: 0;
                 padding-bottom: 0;
                 line-height: 36px;
-                padding-left: 15px;
-                padding-right: 15px;
 
                 &.md-active {
                     opacity: 1;
@@ -1642,6 +1686,10 @@ body {
         background-image: url(../../images/icon_png_back.png);
     }
 
+    &.back_black {
+        background-image: url(../../images/icon_png_back_black.png);
+    }
+
     &.shuffle {
         background-image: url(../../images/icon_png_shuffle.png);
     }
@@ -1654,8 +1702,16 @@ body {
         background-image: url(../../images/icon_png_accept.png);
     }
 
+    &.accept_black {
+        background-image: url(../../images/icon_png_accept_black.png);
+    }
+
     &.edit {
         background-image: url(../../images/icon_png_edit.png);
+
+        &.black{
+            background-image: url(../../images/icon_png_edit_black.png);
+        }
     }
 
     &.copy {
@@ -1821,8 +1877,8 @@ body {
                         padding: 0 15px;
                         font-size: large;
 
-                        &.dontBreak{
-                            word-break:break-word;
+                        &.dontBreak {
+                            word-break: break-word;
                         }
                     }
                 }

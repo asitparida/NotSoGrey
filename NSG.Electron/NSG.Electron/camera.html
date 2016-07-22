@@ -14,18 +14,18 @@
     <video class="nsg-camera" id="nsg_camera" style="width:100vw;display:none;"></video>
     <canvas id="nsg_camera_canvas" style="height:calc(100vh - 48px);width:100%;float:left;" hm-pan="camera.pan($event)"></canvas>
     <div class="icon-cursor" id="nsg_canvas_cursor"></div>
-    <div class="nsg-app-nav" style="float:left;">
+    <div class="nsg-app-nav topShadow canvasNav" style="float:left;">
         <div class="icon-container-holders">
-            <div class="nsg-action-holder" style="width:33%;" ng-click="camera.back()">
-                <div class="icon-container w100 active"><i class="icon icon-png back" title="Back To Launcher"></i></div>
+            <div class="nsg-action-holder" style="width:170px;" ng-click="camera.process()">
+                <div class="icon-container w100 active"><i class="icon icon-png accept_black" title="Pick Spot"></i></div>
             </div>
-            <div class="nsg-action-holder" style="width:33%;" ng-click="camera.process()">
-                <div class="icon-container w100 active"><i class="icon icon-png accept" title="Pick Spot"></i></div>
-            </div>
-            <div class="nsg-action-holder" style="width:33%;" ng-click="camera.skipAhead()">
-                <div class="icon-container w100 active"><i class="icon icon-png jumptoMain48 s24" title="Jump To Color Details"></i></div>
+            <div class="nsg-action-holder" style="width:170px;" ng-click="camera.back()">
+                <div class="icon-container w100 active"><i class="icon icon-png back_black" title="Back To Launcher"></i></div>
             </div>
         </div>
     </div>
+    <svg class="color-cursor" id="nsg_color_cursor" viewBox="0 0 120 120">
+        <path id="nsg-color-cursor-fill" d="M40 99.5 C-22.5 57.5 0 0 40 0.5 C80 0 102.5 57.5 40 99.5z" />
+    </svg>    
 </body>
 </html>

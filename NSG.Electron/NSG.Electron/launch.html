@@ -5,26 +5,26 @@
     <title>Not So Grey</title>
     <link rel="stylesheet" href="dist/css/app.min.css" />
     <script type="text/javascript" src="lib/angular.min.js"></script>
+    <script type="text/javascript" src="lib/angular-animate.min.js"></script>
     <script type="text/javascript" src="dist/js/configs/start.js"></script>
+    <script type="text/javascript" src="dist/js/directives/ng-long-hover.directive.js"></script>
+    <script type="text/javascript" src="dist/js/directives/ng-long-press.directive.js"></script>
 </head>
 <body class="start launch"
       ng-controller="StartController as start"
       ng-class="{'dragger': start.enableDrag}"
       ng-keydown="start.keyDown($event)"
       ng-keyup="start.keyUp($event)">
-    <div class="icon-hodlers">
-        <div class="nsg-action-holder" ng-click="start.launchCanvas()" ng-disabled="start.canvasActivated != true" ng-class="{'disabled': start.canvasActivated != true}">
-            <div class="icon-container w100 "><i class="icon icon-png colorPicker48" title="Spot A Color"></i></div>
-        </div>
-        <div class="nsg-action-holder" ng-click="start.launchKeyboard()" ng-disabled="start.keyboardLaunch != true" ng-class="{'disabled': start.keyboardLaunch != true}">
-            <div class="icon-container w100 "><i class="icon icon-png keyboard48" title="Use Keyboard Shortcut"></i></div>
-        </div>
-        <div class="nsg-action-holder" ng-click="start.launchMain()">
-            <div class="icon-container w100 "><i class="icon icon-png jumptoMain48" title="Jump To Color Details"></i></div>
-        </div>
-        <div class="nsg-action-holder dragger">
+    <div class="icon-hodlers pull-right" ng-long-hover="start.expandLaunch()">
+        <div class="nsg-action-holder dragger pull-right">
             <div class="icon-container w100 h50" style="opacity:0.50;" ng-click="start.closeAll()" title="Close App"><i class="icon icon-png reject noPos h22" style="top:4px;"></i></div>
             <div class="icon-container w100 h50 area" style="opacity:0.50;" title="Move Launcher"><i class="icon icon-png move48 noPos" style="top:6px;"></i></div>
+        </div>
+        <div class="nsg-action-holder pull-right" ng-click="start.launchCanvas()" ng-disabled="start.canvasActivated != true" ng-class="{'disabled': start.canvasActivated != true}">
+            <div class="icon-container w100 "><i class="icon icon-png colorPicker48" title="Spot A Color"></i></div>
+        </div>
+        <div class="nsg-action-holder pull-left anim-fade" ng-click="start.launchMain()" ng-long-press="start.expandLaunch()" ng-show="start.showJumpToMain">
+            <div class="icon-container w100 "><i class="icon icon-png jumptoMain48" title="Jump To Color Details"></i></div>
         </div>
     </div>
 </body>
