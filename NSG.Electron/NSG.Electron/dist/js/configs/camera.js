@@ -96,8 +96,14 @@
             cursor.style.left = cooridnates.x + 'px';
             cursor.style.top = cooridnates.y + 'px';
             self.lastPos = cooridnates;
-            colorCursor.style.left = cooridnates.x + 'px';
-            colorCursor.style.top = cooridnates.y + 'px';
+            var _x = cooridnates.x - 50;
+            var _y = cooridnates.y - 95;
+            _x = _x >= 0 ? _x : _x + 50 + 25;
+            colorCursor.style.left = _x + 'px';
+            colorCursor.style.top = _y + 'px';
+            var _imgData = canvas.getContext("2d").getImageData(cooridnates.x, cooridnates.y, 1, 1).data;
+            var _rgb = { r: _imgData[0], g: _imgData[1], b: _imgData[2] };
+            document.getElementById('nsg-color-cursor-fill').style.fill = tinycolor(_rgb).toHexString();
             if (colorCursor.classList.contains("shown") == false)
                 colorCursor.classList.add("shown");
         }

@@ -43,7 +43,7 @@ function createCameraWindow() {
     cameraWindow.dimensionsWidth = waSize.width;
     cameraWindow.dimensionsHeight = waSize.height;
     cameraWindow.loadURL('file://' + __dirname + '/camera.html')
-    //cameraWindow.webContents.openDevTools()
+    //cameraWindow.webContents.openDevTools();
     cameraWindow.on('closed', function () {
         cameraWindow = null;
     });

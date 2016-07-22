@@ -432,17 +432,23 @@ body {
     z-index: 999;
 }
 
-.color-cursor{
-    height:60px;
-    width:60px;
-    border-radius:50%;
-    display:none;
-    position:absolute;
-    top:0;
-    left:0;
+.color-cursor {
+    height: 60px;
+    width: 120px;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background:transparent;
 
-    &.show{
-        display:block;
+    path {
+        stroke:rgb(0,0,0);
+        stroke-opacity:0.33;
+        stroke-width:5px;
+    }
+
+    &.shown {
+        display: block;
     }
 }
 
