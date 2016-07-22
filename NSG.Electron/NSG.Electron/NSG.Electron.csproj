@@ -89,8 +89,10 @@
     <Content Include="dist\js\controllers\themes-creator.controller.js" />
     <Content Include="dist\js\controllers\themes-popular.controller.js" />
     <Content Include="dist\js\directives\app-action.directive.js" />
+    <Content Include="dist\js\directives\ng-long-hover.directive.js" />
     <Content Include="dist\js\directives\ng-mousewheel-down.directive.js" />
     <Content Include="dist\js\directives\ng-mousewheel-up.directive.js" />
+    <Content Include="dist\js\directives\ng-long-press.directive.js" />
     <Content Include="dist\js\services\shared.service.js" />
     <Content Include="dist\js\templates\app-nav.html" />
     <Content Include="dist\js\templates\palette-save-modal.html" />
@@ -126,8 +128,10 @@
     <Content Include="images\icon-svg.png" />
     <Content Include="images\icon.png" />
     <Content Include="images\icon_png_accept.png" />
+    <Content Include="images\icon_png_accept_black.png" />
     <Content Include="images\icon_png_add.png" />
     <Content Include="images\icon_png_back.png" />
+    <Content Include="images\icon_png_back_black.png" />
     <Content Include="images\icon_png_copy.png" />
     <Content Include="images\icon_png_copy_black.png" />
     <Content Include="images\icon_png_edit.png" />

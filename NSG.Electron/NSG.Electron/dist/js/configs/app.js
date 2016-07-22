@@ -6,8 +6,10 @@ function init($state, $timeout) {
     try {
         let electron = require('electron');
         let _currWindow = electron.remote.getCurrentWindow();
-        if(_currWindow.skipShades)
+        if(_currWindow.skipShades){
+            _currWindow.activeColor = _.sample(['#1abc9c', '#16a085', '#f1c40f', '#f39c12', '#2ecc71', '#27ae60', '#e67e22', '#d35400', '#3498db', '#2980b9', '#e74c3c', '#c0392b', '#9b59b6', '#8e44ad', '#34495e' ]);
             $state.go('ColorDetails.View');
+        }
         else
             $state.go('ColorPicker');
     } catch (e) {
