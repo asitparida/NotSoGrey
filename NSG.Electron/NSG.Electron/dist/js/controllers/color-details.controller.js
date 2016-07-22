@@ -6,7 +6,7 @@
 
     //LOAD PAGE NAV ACTIONS
     var _actions = [
-            { id: 1, name: 'color-picker', icon: 'icon-png jumptoMain48 reverse s24', fn: 'app.closeApp()', title: 'Back To Launcher' },
+            { id: 1, name: 'color-picker', icon: 'icon-png back', fn: 'app.closeApp()', title: 'Back To Launcher' },
             { id: 2, name: 'color-picker', icon: 'icon-app-logo', fn: 'app.goColorDetails()', active: true, title: 'Color Details' },
             { id: 4, name: 'color-contrast', icon: 'icon-app-contrast', fn: 'app.goColorContrast()', title: 'Color Contrast' },
             { id: 3, name: 'color-theme', icon: 'icon-app-theme', fn: 'app.goThemesPopular()', title: 'Popular Themes' },
@@ -19,6 +19,7 @@
     self.activeColor = self.color;
     self.origColor = '#ffffff'
     self.foreColor = self.shared.getForegrundContrastedColor(self.color);
+    self.isLight = self.shared.isLight(self.foreColor);
     self.shared.getColorName(self.color).then(function (data) {
         self.name = data;
     });
@@ -42,6 +43,7 @@
             .then(function (data) {
                 self.activeColor = data;
                 self.foreColor = self.shared.getForegrundContrastedColor(self.activeColor);
+                self.isLight = self.shared.isLight(self.foreColor);
                 self.rgb = self.shared.getPercentageRGB(self.activeColor);
                 self.hsb = self.shared.getPercentageHSB(self.activeColor);
                 self.hex = self.shared.getCodeOnlyFromHexCode(self.activeColor);
@@ -61,6 +63,7 @@
             .then(function (data) {
                 self.activeColor = data;
                 self.foreColor = self.shared.getForegrundContrastedColor(self.activeColor);
+                self.isLight = self.shared.isLight(self.foreColor);
                 self.cmyk = self.shared.getPercentageCMYK(self.activeColor);
                 self.hsb = self.shared.getPercentageHSB(self.activeColor);
                 self.hex = self.shared.getCodeOnlyFromHexCode(self.activeColor);
@@ -80,6 +83,7 @@
             .then(function (data) {
                 self.activeColor = data;
                 self.foreColor = self.shared.getForegrundContrastedColor(self.activeColor);
+                self.isLight = self.shared.isLight(self.foreColor);
                 self.cmyk = self.shared.getPercentageCMYK(self.activeColor);
                 self.rgb = self.shared.getPercentageRGB(self.activeColor);
                 self.hex = self.shared.getCodeOnlyFromHexCode(self.activeColor);
@@ -92,6 +96,7 @@
         }
         self.activeColor = self.shared.getHexFromCode(self.hex);
         self.foreColor = self.shared.getForegrundContrastedColor(self.activeColor);
+        self.isLight = self.shared.isLight(self.foreColor);
         self.cmyk = self.shared.getPercentageCMYK(self.activeColor);
         self.rgb = self.shared.getPercentageRGB(self.activeColor);
         self.hsb = self.shared.getPercentageHSB(self.activeColor);
@@ -100,6 +105,7 @@
         if (self.activeChange == true) {
             self.activeColor = self.origColor;
             self.foreColor = self.shared.getForegrundContrastedColor(self.activeColor);
+            self.isLight = self.shared.isLight(self.foreColor);
             self.cmyk = self.shared.getPercentageCMYK(self.activeColor);
             self.rgb = self.shared.getPercentageRGB(self.activeColor);
             self.hsb = self.shared.getPercentageHSB(self.activeColor);

@@ -1710,6 +1710,10 @@ body {
 
     &.edit {
         background-image: url(../../images/icon_png_edit.png);
+
+        &.black{
+            background-image: url(../../images/icon_png_edit_black.png);
+        }
     }
 
     &.copy {
