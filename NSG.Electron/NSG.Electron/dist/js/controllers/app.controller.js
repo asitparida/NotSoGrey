@@ -3,6 +3,7 @@
     var self = this;
     self.state = $state;
     self.shared = SharedService;
+    self.showCurrentColor = false;
     self.direction = 'fwd';
     self.name = 'Not So Grey';
     self.hideLoader = false;
@@ -15,16 +16,19 @@
     }
 
     self.goColorContrast = function (direction) {
+        self.showCurrentColor = true;
         self.direction = direction || 'fwd';
         self.state.go('ColorContrast');
     }
 
     self.goColorPicker = function (direction) {
+        self.showCurrentColor = false;
         self.direction = direction || 'fwd';
         self.state.go('ColorPicker');
     }
 
     self.goColorDetails = function (direction) {
+        self.showCurrentColor = false;
         self.editColor = false;
         self.direction = direction || 'fwd';
         self.state.go('ColorDetails.View');
@@ -45,6 +49,7 @@
     }
 
     self.goColorEdit = function (direction) {
+        self.showCurrentColor = false;
         self.editColor = true;
         self.direction = direction || 'fwd';
         self.state.go('ColorDetails.Edit');
@@ -61,11 +66,13 @@
     }
 
     self.goThemesPopular = function (direction) {
+        self.showCurrentColor = true;
         self.direction = direction || 'fwd';
         self.state.go('ThemesPopular');
     }
 
     self.goThemesCreator = function (direction) {
+        self.showCurrentColor = true;
         self.direction = direction || 'fwd';
         self.state.go('ThemesCreator');
     }
@@ -91,6 +98,7 @@
             self.shared.notifySave({ 'msg': 'Failed to detect network connectivity!', 'dontBreak': true });
             return;
         }
+        self.showCurrentColor = true;
         self.state.go('DribbbleShots');
     }
 

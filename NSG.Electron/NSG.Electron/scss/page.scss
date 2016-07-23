@@ -432,6 +432,15 @@ body {
     z-index: 999;
 }
 
+.app-current-color{
+    height:5px;
+    width:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:999;
+}
+
 .color-cursor {
     height: 60px;
     width: 120px;
@@ -556,6 +565,12 @@ body {
     }
 }
 
+.nsg-bottom-content{
+    height:36px;
+    width:100%;
+    background:#F6F6F6;
+}
+
 .nsg-mid-view-container {
     width: 100%;
     height: calc(100vh - 96px);
@@ -565,6 +580,10 @@ body {
 
     &.we48 {
         height: calc(100vh - 48px);
+    }
+
+    &.we36 {
+        height: calc(100vh - 84px);
     }
 
     &.posRelative {
@@ -1161,6 +1180,11 @@ body {
     }
 }
 
+
+.nsg-contrast-mode-toggle{
+    margin-top:-48px;
+}
+
 .nsg-theme-mode-toggle,
 .nsg-contrast-mode-toggle {
     md-select-menu {
@@ -1409,10 +1433,9 @@ body {
         margin: 0;
         width: 100%;
         padding: 0;
-        margin-bottom: 5px;
 
         md-select-value {
-            line-height: 36px;
+            line-height: 33px;
             font-family: 'Quicksand';
             font-weight: 700;
             font-size: small;
@@ -1426,7 +1449,10 @@ body {
 
     .nsg-color-details {
         height: 140px;
-        margin-top: 15px;
+
+        .box-holder{
+            padding:5px 0;
+        }
 
         .nsg-color-details-box {
             width: 100%;
@@ -1434,7 +1460,9 @@ body {
 
         .nsg-color-details-box-label {
             width: 100%;
-            text-align: center;
+            text-align: left;
+            margin-bottom:10px;
+            font-size:x-small;
         }
 
         .nsg-color-contrast-label {
@@ -1503,7 +1531,7 @@ body {
 
                 .fill-box {
                     width: 100%;
-                    height: 140px;
+                    height: 150px;
                     -moz-transition: background-color 200ms linear 0s;
                     -o-transition: background-color 200ms linear 0s;
                     -webkit-transition: background-color 200ms linear 0s;
