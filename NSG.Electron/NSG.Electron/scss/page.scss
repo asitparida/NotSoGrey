@@ -432,13 +432,13 @@ body {
     z-index: 999;
 }
 
-.app-current-color{
-    height:5px;
-    width:100%;
-    position:absolute;
-    top:0;
-    left:0;
-    z-index:999;
+.app-current-color {
+    height: 5px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999;
 }
 
 .color-cursor {
@@ -448,12 +448,12 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    background:transparent;
+    background: transparent;
 
     path {
-        stroke:rgb(0,0,0);
-        stroke-opacity:0.33;
-        stroke-width:5px;
+        stroke: rgb(0,0,0);
+        stroke-opacity: 0.33;
+        stroke-width: 5px;
     }
 
     &.shown {
@@ -565,10 +565,10 @@ body {
     }
 }
 
-.nsg-bottom-content{
-    height:36px;
-    width:100%;
-    background:#F6F6F6;
+.nsg-bottom-content {
+    height: 36px;
+    width: 100%;
+    background: #F6F6F6;
 }
 
 .nsg-mid-view-container {
@@ -577,6 +577,7 @@ body {
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar;
+    outline:none;
 
     &.we48 {
         height: calc(100vh - 48px);
@@ -1180,13 +1181,10 @@ body {
     }
 }
 
-
-.nsg-contrast-mode-toggle{
-    margin-top:-48px;
-}
-
 .nsg-theme-mode-toggle,
 .nsg-contrast-mode-toggle {
+    margin-top: -48px;
+
     md-select-menu {
         md-content {
             padding: 0 !important;
@@ -1390,7 +1388,8 @@ body {
 
     .nsg-theme-creator-palette {
         width: 100%;
-        height: calc(100vh - 95px);
+        height: calc(100vh - 84px);
+        outline:none;
 
         .nsg-theme-create-color-item {
             width: 100%;
@@ -1450,8 +1449,8 @@ body {
     .nsg-color-details {
         height: 140px;
 
-        .box-holder{
-            padding:5px 0;
+        .box-holder {
+            padding: 5px 0;
         }
 
         .nsg-color-details-box {
@@ -1461,8 +1460,8 @@ body {
         .nsg-color-details-box-label {
             width: 100%;
             text-align: left;
-            margin-bottom:10px;
-            font-size:x-small;
+            margin-bottom: 10px;
+            font-size: x-small;
         }
 
         .nsg-color-contrast-label {
@@ -1737,7 +1736,7 @@ body {
     &.edit {
         background-image: url(../../images/icon_png_edit.png);
 
-        &.black{
+        &.black {
             background-image: url(../../images/icon_png_edit_black.png);
         }
     }

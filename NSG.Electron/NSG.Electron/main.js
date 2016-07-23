@@ -18,11 +18,11 @@ function createMainWindow(color, skipShades) {
     let waSize = electron.screen.getPrimaryDisplay().workAreaSize;
     let posX = waSize.width - 340 - 15;
     let posY = waSize.height - 540 - 15;
-    mainWindow = new BrowserWindow({ width: 340, height: 540, x: posX, y: posY, icon: 'images/icon@2x.ico', resizable: false, movable: true, minimizable: false, maximizable: false, alwaysOnTop: true, frame: false, backgroundColor: '#1ca32d', title: 'Not So Grey', show: false });
+    mainWindow = new BrowserWindow({ width: 1340, height: 540, x: posX, y: posY, icon: 'images/icon@2x.ico', resizable: false, movable: true, minimizable: false, maximizable: false, alwaysOnTop: true, frame: false, backgroundColor: '#1ca32d', title: 'Not So Grey', show: false });
     mainWindow.activeColor = activeColor;
     mainWindow.skipShades = skipShades;
     mainWindow.loadURL('file://' + __dirname + '/index.html')
-    //mainWindow.webContents.openDevTools()
+    mainWindow.webContents.openDevTools()
     mainWindow.on('closed', function () {
         if (readyToQuit == true && process.platform !== 'darwin') {
             mainWindow = null;
