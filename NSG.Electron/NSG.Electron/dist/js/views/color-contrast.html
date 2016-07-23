@@ -1,16 +1,5 @@
 ﻿<div ng-controller="ColorContrastController as colorContrast" class="anim-slide-left">
-    <div class="nsg-mid-view-container we48 nsg-color-contrast">
-        <md-input-container class="nsg-color-contrast-mode">
-            <md-select ng-model="colorContrast.mode" data-md-container-class="nsg-contrast-mode-toggle" ng-style="{'color': '#000'}" ng-change="colorContrast.colorChanged()">
-                <md-select-header class="nsg-contrast-creator-select-header">
-                    <label>Choose color blindness</label>
-                </md-select-header>
-                <md-optgroup label="modes">
-                    <md-option ng-value="item" ng-repeat="item in colorContrast.colorContrastModes"
-                               ng-style="{'color': '#000'}">{{item.name}}</md-option>
-                </md-optgroup>
-            </md-select>
-        </md-input-container>
+    <div class="nsg-mid-view-container we36 nsg-color-contrast">
         <div class="nsg-color-details-color-banner sample-contrast">
             <div class="nsg-color-item">
                 <div class="nsg-color-fill">
@@ -44,5 +33,19 @@
                 </div>
             </div>
         </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="nsg-bottom-content nsg-color-contrast">
+        <md-input-container class="nsg-color-contrast-mode">
+            <md-select ng-model="colorContrast.mode" data-md-container-class="nsg-contrast-mode-toggle" ng-style="{'color': '#000'}" ng-change="colorContrast.colorChanged()">
+                <md-select-header class="nsg-contrast-creator-select-header">
+                    <label>Choose Vision Type</label>
+                </md-select-header>
+                <md-optgroup label="modes">
+                    <md-option ng-value="item" ng-repeat="item in colorContrast.colorContrastModes"
+                               ng-style="{'color': '#000'}">{{item.name}}</md-option>
+                </md-optgroup>
+            </md-select>
+        </md-input-container>
     </div>
 </div>

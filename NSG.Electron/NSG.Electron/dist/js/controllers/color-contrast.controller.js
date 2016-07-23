@@ -10,7 +10,7 @@
             { id: 3, name: 'color-theme', icon: 'icon-app-theme', fn: 'app.goThemesPopular()', title: 'Popular Themes' },
             { id: 5, name: 'color-dribbble', icon: 'icon-app-dribbble', fn: 'app.goDribbble()', title: 'Dribbble Shots' }
     ];
-    self.shared.loadActions(_actions);
+    self.shared.loadActions(_actions, 'ColorContrast');
     self.colorContrastModes = self.shared.colorContrastModes;
     self.mode = self.colorContrastModes[0];
     self.color1 = self.shared.activeColor;

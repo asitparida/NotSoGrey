@@ -12,7 +12,7 @@
             { id: 3, name: 'color-theme', icon: 'icon-app-theme', fn: 'app.goThemesPopular()', title: 'Popular Themes' },
             { id: 5, name: 'color-dribbble', icon: 'icon-app-dribbble', fn: 'app.goDribbble()', title: 'Dribbble Shots' }
     ];
-    self.shared.loadActions(_actions);
+    self.shared.loadActions(_actions, 'ColorDetails.View');
 
     // GET COLOR FROM SHARED SERVICE INSTANCE
     self.color = angular.copy(self.shared.activeColor) || '#1ca32d';
@@ -28,7 +28,18 @@
     self.rgb = self.shared.getPercentageRGB(self.color);
     self.hsb = self.shared.getPercentageHSB(self.color);
     self.hex = self.shared.getCodeOnlyFromHexCode(self.activeColor);
-    self.cmykValueChanged = function (flag) {
+    self.cmykValueChanged = function (flag, id) {
+
+        if (flag != true) {
+            var _elm = document.getElementById(id + '-input');
+            if (_elm.classList.contains("active") == false)
+                _elm.classList.add("active");
+            setTimeout(function () {
+                if (_elm.classList.contains("active") == true)
+                    _elm.classList.remove("active");
+            }, 1500);
+        }
+
         if (flag) {
             self.cmyk.c = parseInt(self.cmyk.c);
             self.cmyk.m = parseInt(self.cmyk.m);
@@ -49,7 +60,18 @@
                 self.hex = self.shared.getCodeOnlyFromHexCode(self.activeColor);
             });
     }
-    self.rgbValueChange = function (flag) {
+    self.rgbValueChange = function (flag, id) {
+
+        if (flag != true) {
+            var _elm = document.getElementById(id + '-input');
+            if (_elm.classList.contains("active") == false)
+                _elm.classList.add("active");
+            setTimeout(function () {
+                if (_elm.classList.contains("active") == true)
+                    _elm.classList.remove("active");
+            }, 1500);
+        }
+
         if (flag) {
             self.rgb.r = parseInt(self.rgb.r);
             self.rgb.g = parseInt(self.rgb.g);
@@ -69,7 +91,16 @@
                 self.hex = self.shared.getCodeOnlyFromHexCode(self.activeColor);
             });
     }
-    self.hsbValueChange = function (flag) {
+    self.hsbValueChange = function (flag, id) {
+        if (flag != true) {
+            var _elm = document.getElementById(id + '-input');
+            if (_elm.classList.contains("active") == false)
+                _elm.classList.add("active");
+            setTimeout(function () {
+                if (_elm.classList.contains("active") == true)
+                    _elm.classList.remove("active");
+            }, 1500);
+        }
         if (flag) {
             self.hsb.h = parseInt(self.hsb.h);
             self.hsb.s = parseInt(self.hsb.s);

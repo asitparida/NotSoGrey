@@ -1,5 +1,5 @@
 ﻿angular.module('NotSoGrey')
-.service("SharedService", ["$http", "$q", "$uibModal", "$window", "$resource", function ($http, $q, $uibModal, $window, $resource) {
+.service("SharedService", ["$http", "$q", "$uibModal", "$window", "$resource", "$state", function ($http, $q, $uibModal, $window, $resource, $state) {
     var self = this;
     try {
         let electron = require('electron');
@@ -9,6 +9,7 @@
         self.activeColor = '#c0392b';
     }
     self.uibModal = $uibModal;
+    self.state = $state;
     self.actions = [];
     self.resource = $resource;
     self.preLoadedThemeInEdit = false;
@@ -155,7 +156,29 @@
         return _resultantHue;
     }
 
-    self.loadActions = function (items) {
+    self.loadActions = function (items, state) {
+        //var _proceed = false;
+        //var _currentMap = _.map(self.actions, function (act) { return { 'id': act.id, 'fn': act.fn } });
+        //var _newMap = _.map(items, function (act) { return { 'id': act.id, 'fn': act.fn } });
+        //if (JSON.stringify(_currentMap) == JSON.stringify(_newMap)) {
+        //    var fni = _.find(items, function (item) {
+        //        return item.active == true;
+        //    });
+        //    if (typeof fni !== 'undefined') {
+        //        _.each(self.actions, function (act) {
+        //            if (act.fn == fni.fn)
+        //                act.active = true;
+        //            else
+        //                act.active = false;
+        //        });
+        //    }
+        //}
+        //else {
+        //    self.actions = [];
+        //    angular.forEach(items, function (item) {
+        //        self.actions.push(angular.copy(item));
+        //    });
+        //}
         self.actions = [];
         angular.forEach(items, function (item) {
             self.actions.push(angular.copy(item));
@@ -578,8 +601,8 @@
         }
         return _defer.promise;
     }
-    
-    self.getColorName = function(color) {
+
+    self.getColorName = function (color) {
         if (_defer) _defer.reject();
         _defer = $q.defer();
         try {
