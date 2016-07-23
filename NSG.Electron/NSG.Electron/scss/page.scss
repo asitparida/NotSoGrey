@@ -884,10 +884,17 @@ body {
                     text-align: right;
                     display: inline;
                     width: 24px;
+                    opacity:0.60;
+                    transition:0.3s linear;
+
+                    &.active{
+                        opacity:1;
+                    }
                 }
 
                 span {
                     color: #fff;
+                    opacity:0.60;
                     height: 20px;
                     margin: 0;
                     padding: 0;
