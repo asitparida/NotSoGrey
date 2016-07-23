@@ -428,7 +428,7 @@ body {
 .app-nav-content {
     height: 48px;
     width: 100%;
-    position: relative;
+    position: fixed;
     z-index: 999;
 }
 
@@ -568,7 +568,20 @@ body {
 .nsg-bottom-content {
     height: 36px;
     width: 100%;
-    background: #F6F6F6;
+    background: #F0F0F0;
+
+    .nsg-title {
+        font-family: 'Quicksand';
+        font-weight: 600;
+        font-size: small;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        line-height: 36px;
+        padding: 0 10px;
+        width: 100%;
+        margin: 0;
+        text-align:center
+    }
 }
 
 .nsg-mid-view-container {
@@ -577,7 +590,7 @@ body {
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar;
-    outline:none;
+    outline: none;
 
     &.we48 {
         height: calc(100vh - 48px);
@@ -1123,6 +1136,7 @@ body {
 @include scrollbars(.5em, darken($header-foreground, 20));
 
 .nsg-themes-popular {
+    padding-top: 12px;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar;
@@ -1389,7 +1403,7 @@ body {
     .nsg-theme-creator-palette {
         width: 100%;
         height: calc(100vh - 84px);
-        outline:none;
+        outline: none;
 
         .nsg-theme-create-color-item {
             width: 100%;

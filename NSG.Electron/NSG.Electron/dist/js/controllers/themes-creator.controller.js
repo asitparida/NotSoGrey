@@ -14,7 +14,7 @@
        { id: 1, name: 'back-72b', icon: 'icon-png shuffle', fn: 'app.createThemeShuffle()', active: false, title: 'Shuffle Palette' },
        { id: 3, name: 'color-SHARE', icon: 'icon-png share', fn: 'app.shared.toggleSharePanel()', title: 'Share / Export Palette' },
     ];
-    self.shared.loadActions(_actions);
+    //self.shared.loadActions(_actions);
     self.themeGeneratorOptions = self.shared.themeGeneratorOptions;
     if (self.shared.preLoadedThemeInEdit != true) {
         self.mode = self.themeGeneratorOptions[1];

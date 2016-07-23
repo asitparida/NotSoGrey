@@ -4,8 +4,11 @@
     self.state = $state;
     self.shared = SharedService;
     var _actions = [
-            { id: 1, name: 'back-72b', icon: 'icon-png back', fn: 'app.goColorDetails()', title: 'Back To Color Details' },
-            { id: 2, name: 'add', icon: 'icon-png add', fn: 'app.goThemesCreator()', title: 'Create Color Palette' }
+            { id: 1, name: 'color-picker', icon: 'icon-png back', fn: 'app.closeApp()', title: 'Back To Launcher' },
+            { id: 2, name: 'color-picker', icon: 'icon-app-logo', fn: 'app.goColorDetails()', title: 'Color Details' },
+            { id: 4, name: 'color-contrast', icon: 'icon-app-contrast', fn: 'app.goColorContrast()', title: 'Color Contrast' },
+            { id: 3, name: 'color-theme', icon: 'icon-app-theme', fn: 'app.goThemesPopular()', title: 'Popular Themes', active: true},
+            { id: 5, name: 'color-dribbble', icon: 'icon-app-dribbble', fn: 'app.goDribbble()', title: 'Dribbble Shots' }
     ];
     self.shared.loadActions(_actions);
     self.themes = [];

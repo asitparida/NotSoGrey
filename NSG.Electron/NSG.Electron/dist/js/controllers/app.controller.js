@@ -65,15 +65,13 @@
         self.goColorDetails();
     }
 
-    self.goThemesPopular = function (direction) {
+    self.goThemesPopular = function () {
         self.showCurrentColor = true;
-        self.direction = direction || 'fwd';
         self.state.go('ThemesPopular');
     }
 
-    self.goThemesCreator = function (direction) {
+    self.goThemesCreator = function () {
         self.showCurrentColor = true;
-        self.direction = direction || 'fwd';
         self.state.go('ThemesCreator');
     }
 
