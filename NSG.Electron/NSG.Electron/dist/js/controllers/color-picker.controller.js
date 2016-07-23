@@ -11,7 +11,7 @@
         { id: 1, name: 'close', icon: 'icon-png back', fn: 'app.closeApp()', title: 'Back To Launcher', active: true },
         { id: 2, name: 'accept', icon: 'icon-png accept', fn: 'app.goColorDetails()', title: 'Choose Color Shade', active: true },
     ];
-    self.shared.loadActions(_actions);
+    self.shared.loadActions(_actions, 'ColorPicker');
     self.topnav = { 'isActive1': true, 'isActive2': false, 'isActive3': false };
     self.name = 'Diablo Red';
     self.color = self.origColorPrimary = self.shared.activeColor;

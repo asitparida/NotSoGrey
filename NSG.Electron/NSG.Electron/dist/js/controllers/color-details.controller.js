@@ -12,7 +12,7 @@
             { id: 3, name: 'color-theme', icon: 'icon-app-theme', fn: 'app.goThemesPopular()', title: 'Popular Themes' },
             { id: 5, name: 'color-dribbble', icon: 'icon-app-dribbble', fn: 'app.goDribbble()', title: 'Dribbble Shots' }
     ];
-    self.shared.loadActions(_actions);
+    self.shared.loadActions(_actions, 'ColorDetails.View');
 
     // GET COLOR FROM SHARED SERVICE INSTANCE
     self.color = angular.copy(self.shared.activeColor) || '#1ca32d';

@@ -11,7 +11,7 @@
             { id: 3, name: 'color-theme', icon: 'icon-app-theme', fn: 'app.goThemesPopular()', title: 'Popular Themes' },
             { id: 5, name: 'color-dribbble', icon: 'icon-app-dribbble', fn: 'app.goDribbble()', active: true, title: 'Dribbble Shots' }
     ];
-    self.shared.loadActions(_actions);
+    self.shared.loadActions(_actions, 'DribbbleShots');
     self.shotsAvailable = false;
     self.rawData = [];
     self.openShotsPage = function () {

@@ -39,7 +39,7 @@
             { id: 3, name: 'color-theme', icon: 'icon-app-theme', fn: 'app.goThemesPopular()', title: 'Popular Themes' },
             { id: 5, name: 'color-dribbble', icon: 'icon-app-dribbble', fn: 'app.goDribbble()', title: 'Dribbble Shots' }
         ];
-        self.shared.loadActions(_actions);
+        self.shared.loadActions(_actions, 'ColorDetails.View');
     }
 
     self.ratifyColorDetails = function () {
@@ -57,7 +57,7 @@
             { id: 3, name: 'accept', icon: 'icon-png accept', fn: 'app.ratifyColorDetails()', title: 'Accept Changes', active: true },
             { id: 1, name: 'close', icon: 'icon-png reject', fn: 'app.revertDetails()', title: 'Revert Changes', active: true },
         ];
-        self.shared.loadActions(_actions);
+        self.shared.loadActions(_actions, 'ColorDetails.Edit');
     }
 
     self.revertDetails = function () {
