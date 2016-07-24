@@ -501,6 +501,8 @@ body {
 
             .icon-container {
                 color: #303030;
+
+                  @include focus-states();
             }
         }
     }
