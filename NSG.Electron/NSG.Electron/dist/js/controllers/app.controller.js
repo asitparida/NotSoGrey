@@ -15,9 +15,26 @@
         console.log(fn);
     }
 
+    self.animateColorBanner = function () {
+        var _viewElm = angular.element(document.getElementById('nsg_color_details_view'));      
+        var _elm = angular.element(document.getElementById('nsg_color_details_banner'));
+        $(_viewElm).children().fadeOut(300, function () {
+            $(this).empty();
+            $(_elm).children().fadeOut(150, function () {
+                $(this).empty();
+            });
+        });
+        $(_elm).addClass('animate-to-fade');
+        $timeout(function myfunction() {
+            $(_elm).remove();
+            self.state.go('ColorContrast');
+        }, 500);
+    }
+
     self.goColorContrast = function (direction) {
         self.showCurrentColor = true;
-        self.direction = direction || 'fwd';
+        //self.animateColorBanner();
+        //self.direction = direction || 'fwd';
         self.state.go('ColorContrast');
     }
 

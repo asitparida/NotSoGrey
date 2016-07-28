@@ -159,6 +159,7 @@
     <Content Include="lib\Color.Blind.js" />
     <Content Include="lib\Color.Space.js" />
     <Content Include="lib\hammer.min.js" />
+    <Content Include="lib\jquery-2.2.4.min.js" />
     <Content Include="lib\Please.js" />
     <Content Include="lib\tinycolor-min.js" />
     <Content Include="lib\ui-bootstrap-tpls-1.1.1.min.js" />
