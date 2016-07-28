@@ -6,8 +6,11 @@
                     <div class="fill-box no-shadow" ng-style="{'background-color': colorContrast.backcolor1}">
                         <md-input-container class="md-block nsg-color-input-container" flex-gt-sm ng-class="{'light':colorContrast.color1IsLight}">
                             <label>Color #1</label>
-                            <input class="nsg-color-input" ng-model="colorContrast.color1" ng-change="colorContrast.colorChanged()" />
+                            <input class="nsg-color-input" ng-model="colorContrast.color1" ng-change="colorContrast.colorChanged()" ng-focus="colorContrast.color1Focussed()" ng-blur="colorContrast.color1Blurred()" ng-style="{'color': colorContrast.color1Fore}" ng-class="{'focussed': colorContrast.color1FocussedFlag}" />
                         </md-input-container>
+                        <div class="nsg-color-input-reset" ng-click="colorContrast.resetColor1()">
+                            <i class="icon icon-png refresh" ng-class="{'black':colorContrast.color1IsLight}"></i>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -16,8 +19,11 @@
                     <div class="fill-box no-shadow" ng-style="{'background-color': colorContrast.backcolor2}">
                         <md-input-container class="md-block nsg-color-input-container" flex-gt-sm ng-class="{'light':colorContrast.color2IsLight}">
                             <label>Color #2</label>
-                            <input class="nsg-color-input" ng-model="colorContrast.color2" ng-change="colorContrast.colorChanged()" />
+                            <input class="nsg-color-input" ng-model="colorContrast.color2" ng-change="colorContrast.colorChanged()" ng-focus="colorContrast.color2Focussed()" ng-blur="colorContrast.color2Blurred()" ng-style="{'color': colorContrast.color2Fore}" ng-class="{'focussed': colorContrast.color2FocussedFlag}" />
                         </md-input-container>
+                        <div class="nsg-color-input-reset" ng-click="colorContrast.resetColor2()">
+                            <i class="icon icon-png refresh" ng-class="{'black':colorContrast.color2IsLight}"></i>
+                        </div>
                     </div>
                 </div>
             </div>

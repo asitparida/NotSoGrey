@@ -32,6 +32,50 @@
         self.backcolor1 = tinycolor(color1Ratified).toHexString();
         self.backcolor2 = tinycolor(color2Ratified).toHexString();
         self.ratio = self.shared.getContrastRatio(color1Ratified, color2Ratified);
+
+        if (self.color1FocussedFlag) {
+            self.color1Fore = self.shared.isLight(self.backcolor1) ? '#000' : '#fff';
+            self.color2Fore = self.backcolor1;
+        }
+
+        if (self.color2FocussedFlag) {
+            self.color2Fore = self.shared.isLight(self.backcolor2) ? '#000' : '#fff';
+            self.color1Fore = self.backcolor2;
+        }
+    }
+
+    self.color1Fore = self.backcolor2;
+    self.color2Fore = self.backcolor1;
+    self.color2FocussedFlag = self.color1FocussedFlag = false;
+    self.color1Focussed = function () {
+        self.color1Fore = self.shared.isLight(self.backcolor1) ? '#000' : '#fff';
+        self.color1FocussedFlag = true;
+    }
+    self.color1Blurred = function () {
+        self.color1Fore = self.backcolor2;
+        self.color1FocussedFlag = false;
+    }
+    self.color2Focussed = function () {
+        self.color2Fore = self.shared.isLight(self.backcolor2) ? '#000' : '#fff';
+        self.color2FocussedFlag = true;
+    }
+    self.color2Blurred = function () {
+        self.color2Fore = self.backcolor1;
+        self.color2FocussedFlag = false;
+    }
+
+    self.resetColor1 = function () {
+        self.color1 = self.shared.activeColor;
+        self.backcolor1 = self.color1;
+        self.ratio = self.shared.getContrastRatio(self.color1, self.color2);
+        self.color1IsLight = self.shared.isLight(self.color1);
+    }
+
+    self.resetColor2 = function () {
+        self.color2 = self.shared.getForegrundContrastedColor(self.shared.activeColor);
+        self.backcolor2 = self.color2;
+        self.ratio = self.shared.getContrastRatio(self.color1, self.color2);
+        self.color2IsLight = self.shared.isLight(self.color2);
     }
 
     self.goThemePopular = function () {

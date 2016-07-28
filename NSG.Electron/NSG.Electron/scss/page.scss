@@ -1643,6 +1643,35 @@ body {
                     }
                 }
 
+                .nsg-color-input-reset {
+                    width: 36px;
+                    height: 36px;
+                    float: right;
+                    cursor: pointer;
+                    position: absolute;
+                    top: 0;
+                    right: 5px;
+                    transition: all 33ms;
+                    outline: none;
+                    transition: all 100ms;
+
+                    &:active {
+                        -moz-transform: scale(0.98, 0.98);
+                        -ms-transform: scale(0.98, 0.98);
+                        -o-transform: scale(0.98, 0.98);
+                        -webkit-transform: scale(0.98, 0.98);
+                        transform: scale(0.98, 0.98);
+                    }
+
+                    &:hover {
+                        -moz-transform: scale(1.10, 1.10);
+                        -ms-transform: scale(1.10, 1.10);
+                        -o-transform: scale(1.10, 1.10);
+                        -webkit-transform: scale(1.10, 1.10);
+                        transform: scale(1.10, 1.10);
+                    }
+                }
+
                 .nsg-color-input-container {
                     margin: 25px 0 0 10px;
                     position: absolute;
@@ -1684,12 +1713,13 @@ body {
                         transition: 0.3s linear 0s;
                         background: transparent;
                         outline: none;
-                        opacity: 0.75;
+                        opacity: 1;
                         height: 100px;
                         border-bottom: 1px solid transparent;
-                        opacity: 0.50;
                         color: rgb(255,255,255);
-
+                        /*&.focussed{
+                            opacity: 0.50;
+                        }*/
                         &:focus, &:active {
                             opacity: 1;
                             border-bottom: 1px solid rgba(0,0,0,0.15);
@@ -1849,6 +1879,14 @@ body {
 
     &.move48 {
         background-image: url(../../images/app_move_48.png);
+    }
+
+    &.refresh {
+        background-image: url(../../images/icon_png_refresh_white.png);
+
+        &.black {
+            background-image: url(../../images/icon_png_refresh_black.png);
+        }
     }
 
     &.jumptoMain48 {
