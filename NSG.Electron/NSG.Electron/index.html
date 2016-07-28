@@ -15,6 +15,7 @@
     <script type="text/javascript" src="lib/Color.Space.js"></script>
     <script type="text/javascript" src="lib/Color.Blind.js"></script>
     <script type="text/javascript" src="lib/hammer.min.js"></script>
+    <script type="text/javascript" src="lib/jquery-2.2.4.min.js"></script>
     <script type="text/javascript" src="lib/angular.min.js"></script>
     <script type="text/javascript" src="lib/angular-material.js"></script>
     <script type="text/javascript" src="lib/angular-resource.min.js"></script>
@@ -42,7 +43,7 @@
 
 </head>
 <body ng-controller="AppController as app" style="height:540px;overflow-y:hidden;">
-    <div class="app-content">
+    <div class="app-content" ng-style="{'background-color':app.shared.activeColor}"> 
         <div class="spinner-holder" ng-hide="app.hideLoader" ng-style="{'background-color':app.shared.activeColor}">
             <div class="spinner">
                 <div class="double-bounce1"></div>
@@ -50,7 +51,7 @@
             </div>
         </div>
         <div class="app-current-color" ng-show="app.showCurrentColor" ng-style="{'background-color':app.shared.activeColor}"></div>
-        <div class="ui-view-container-main enter-page anim-in-out anim-slide-left" ui-view data-anim-speed="340" data-anim-sync="true"></div>
+        <div class="ui-view-container-main enter-page anim-in-out anim-slide-below-fade" ui-view data-anim-speed="340" data-anim-sync="true"></div>
     </div>
     <div class="app-nav-content">
         <ng-include src="'dist/js/templates/app-nav.html'"></ng-include>

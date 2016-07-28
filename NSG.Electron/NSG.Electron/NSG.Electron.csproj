@@ -136,6 +136,8 @@
     <Content Include="images\icon_png_copy_black.png" />
     <Content Include="images\icon_png_edit.png" />
     <Content Include="images\icon_png_edit_black.png" />
+    <Content Include="images\icon_png_refresh_black.png" />
+    <Content Include="images\icon_png_refresh_white.png" />
     <Content Include="images\icon_png_reject.png" />
     <Content Include="images\icon_png_share.png" />
     <Content Include="images\icon_png_shuffle.png" />
@@ -159,6 +161,7 @@
     <Content Include="lib\Color.Blind.js" />
     <Content Include="lib\Color.Space.js" />
     <Content Include="lib\hammer.min.js" />
+    <Content Include="lib\jquery-2.2.4.min.js" />
     <Content Include="lib\Please.js" />
     <Content Include="lib\tinycolor-min.js" />
     <Content Include="lib\ui-bootstrap-tpls-1.1.1.min.js" />

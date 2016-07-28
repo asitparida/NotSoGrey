@@ -109,11 +109,22 @@ body {
 
                     &.anim-fade {
                         opacity: 1;
+                        -moz-transition: all 0.5s ease-in-out 0s;
+                        -o-transition: all 0.5s ease-in-out 0s;
+                        -webkit-transition: all 0.5s ease-in-out 0s;
                         transition: all 0.5s ease-in-out 0s;
+                        -moz-transform: translateX(0);
+                        -ms-transform: translateX(0);
+                        -o-transform: translateX(0);
+                        -webkit-transform: translateX(0);
                         transform: translateX(0);
 
                         &.ng-hide {
                             opacity: 0;
+                            -moz-transform: translateX(30px);
+                            -ms-transform: translateX(30px);
+                            -o-transform: translateX(30px);
+                            -webkit-transform: translateX(30px);
                             transform: translateX(30px);
                         }
                     }
@@ -348,6 +359,10 @@ body {
     }
 }
 
+.bgWhite {
+    background: #fff;
+}
+
 [ui-view] {
 
     &.ui-view-container-main {
@@ -360,6 +375,43 @@ body {
         width: 100%;
         bottom: 0;
         background: #fff;
+    }
+}
+
+#nsg_color_details_banner {
+    &.animate-to-fade {
+        height: 400px;
+        top: -200px;
+        position: absolute;
+        -moz-transition: all 0.3s linear 0s;
+        -o-transition: all 0.3s linear 0s;
+        -webkit-transition: all 0.3s linear 0s;
+        transition: all 0.3s linear 0s;
+        -moz-animation: anim-to-fade-banner 0.3s forwards linear;
+        -o-animation: anim-to-fade-banner 0.3s forwards linear;
+        -webkit-animation: anim-to-fade-banner 0.3s forwards linear;
+        animation: anim-to-fade-banner 0.3s forwards linear;
+        -moz-transform: scale3d(1.5,1,1);
+        -ms-transform: scale3d(1.5,1,1);
+        -o-transform: scale3d(1.5,1,1);
+        -webkit-transform: scale3d(1.5,1,1);
+        transform: scale3d(1.5,1,1);
+    }
+}
+
+@keyframes anim-to-fade-banner {
+    0% {
+        border-radius: 1%;
+        height: 400px;
+    }
+
+    50% {
+        border-radius: 50%;
+    }
+
+    100% {
+        border-radius: 0;
+        height: 205px;
     }
 }
 
@@ -502,7 +554,7 @@ body {
             .icon-container {
                 color: #303030;
 
-                  @include focus-states();
+                @include focus-states();
             }
         }
     }
@@ -582,7 +634,7 @@ body {
         padding: 0 10px;
         width: 100%;
         margin: 0;
-        text-align:center
+        text-align: center;
     }
 }
 
@@ -632,6 +684,9 @@ body {
 
         &.ng-hide-add,
         &.ng-hide-remove {
+            -moz-transition: all linear 0.5s;
+            -o-transition: all linear 0.5s;
+            -webkit-transition: all linear 0.5s;
             transition: all linear 0.5s;
         }
 
@@ -640,6 +695,9 @@ body {
         }
 
         &.anim {
+            -moz-transition: left 0.3s linear 0s;
+            -o-transition: left 0.3s linear 0s;
+            -webkit-transition: left 0.3s linear 0s;
             transition: left 0.3s linear 0s;
         }
     }
@@ -669,6 +727,10 @@ body {
     &:hover {
         .icon.color-edit {
             opacity: 1;
+            -moz-transform: scale(1.25);
+            -ms-transform: scale(1.25);
+            -o-transform: scale(1.25);
+            -webkit-transform: scale(1.25);
             transform: scale(1.25);
         }
 
@@ -690,6 +752,9 @@ body {
 
     .showOnHover,
     .dontShowOnHover {
+        -moz-transition: 0.3s linear;
+        -o-transition: 0.3s linear;
+        -webkit-transition: 0.3s linear;
         transition: 0.3s linear;
     }
 
@@ -698,6 +763,9 @@ body {
         top: 50px;
         left: calc(50% - 18px);
         opacity: 0.50;
+        -moz-transition: 0.3s linear 0s;
+        -o-transition: 0.3s linear 0s;
+        -webkit-transition: 0.3s linear 0s;
         transition: 0.3s linear 0s;
     }
 
@@ -886,17 +954,20 @@ body {
                     text-align: right;
                     display: inline;
                     width: 24px;
-                    opacity:0.60;
-                    transition:0.3s linear;
+                    opacity: 0.60;
+                    -moz-transition: 0.3s linear;
+                    -o-transition: 0.3s linear;
+                    -webkit-transition: 0.3s linear;
+                    transition: 0.3s linear;
 
-                    &.active{
-                        opacity:1;
+                    &.active {
+                        opacity: 1;
                     }
                 }
 
                 span {
                     color: #fff;
-                    opacity:0.60;
+                    opacity: 0.60;
                     height: 20px;
                     margin: 0;
                     padding: 0;
@@ -1572,6 +1643,35 @@ body {
                     }
                 }
 
+                .nsg-color-input-reset {
+                    width: 36px;
+                    height: 36px;
+                    float: right;
+                    cursor: pointer;
+                    position: absolute;
+                    top: 0;
+                    right: 5px;
+                    transition: all 33ms;
+                    outline: none;
+                    transition: all 100ms;
+
+                    &:active {
+                        -moz-transform: scale(0.98, 0.98);
+                        -ms-transform: scale(0.98, 0.98);
+                        -o-transform: scale(0.98, 0.98);
+                        -webkit-transform: scale(0.98, 0.98);
+                        transform: scale(0.98, 0.98);
+                    }
+
+                    &:hover {
+                        -moz-transform: scale(1.10, 1.10);
+                        -ms-transform: scale(1.10, 1.10);
+                        -o-transform: scale(1.10, 1.10);
+                        -webkit-transform: scale(1.10, 1.10);
+                        transform: scale(1.10, 1.10);
+                    }
+                }
+
                 .nsg-color-input-container {
                     margin: 25px 0 0 10px;
                     position: absolute;
@@ -1613,12 +1713,13 @@ body {
                         transition: 0.3s linear 0s;
                         background: transparent;
                         outline: none;
-                        opacity: 0.75;
+                        opacity: 1;
                         height: 100px;
                         border-bottom: 1px solid transparent;
-                        opacity: 0.50;
                         color: rgb(255,255,255);
-
+                        /*&.focussed{
+                            opacity: 0.50;
+                        }*/
                         &:focus, &:active {
                             opacity: 1;
                             border-bottom: 1px solid rgba(0,0,0,0.15);
@@ -1780,6 +1881,14 @@ body {
         background-image: url(../../images/app_move_48.png);
     }
 
+    &.refresh {
+        background-image: url(../../images/icon_png_refresh_white.png);
+
+        &.black {
+            background-image: url(../../images/icon_png_refresh_black.png);
+        }
+    }
+
     &.jumptoMain48 {
         background-image: url(../../images/app_jump_main48.png);
 
@@ -1793,6 +1902,7 @@ body {
             -moz-transform: scaleX(-1);
             -o-transform: scaleX(-1);
             -webkit-transform: scaleX(-1);
+            -ms-transform: scaleX(-1);
             transform: scaleX(-1);
             -ms-filter: "FlipH";
             filter: FlipH;
@@ -1923,11 +2033,13 @@ body {
                         display: table-cell;
                         vertical-align: middle;
                         height: 172px;
+                        -ms-word-break: break-all;
                         word-break: break-all;
                         padding: 0 15px;
                         font-size: large;
 
                         &.dontBreak {
+                            -ms-word-break: break-word;
                             word-break: break-word;
                         }
                     }
@@ -1960,6 +2072,8 @@ body {
                         width: calc(100% - 60px);
                         margin: 0 30px;
                         border-top: none;
+                        -moz-box-sizing: border-box;
+                        -webkit-box-sizing: border-box;
                         box-sizing: border-box;
                     }
                 }
