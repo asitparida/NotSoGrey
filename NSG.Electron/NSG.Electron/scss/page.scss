@@ -1889,6 +1889,13 @@ body {
         }
     }
 
+    &.info {
+
+        &.black {
+            background-image: url(../../images/icon_png_info_black.png);
+        }
+    }
+
     &.jumptoMain48 {
         background-image: url(../../images/app_jump_main48.png);
 
@@ -2026,17 +2033,26 @@ body {
                     width: 100%;
                     border: none;
 
+                    .info-icon-container {
+                        height: 36px;
+                        width: 36px;
+                        margin: auto auto;
+                        display: block;
+                    }
+
                     .modal-title {
                         width: 100%;
                         margin: 0;
                         text-align: center;
                         display: table-cell;
-                        vertical-align: middle;
+                        vertical-align: top;
                         height: 172px;
                         -ms-word-break: break-all;
                         word-break: break-all;
                         padding: 0 15px;
-                        font-size: large;
+                        font-size: medium;
+                        font-weight: 500;
+                        padding-top:15px;
 
                         &.dontBreak {
                             -ms-word-break: break-word;
