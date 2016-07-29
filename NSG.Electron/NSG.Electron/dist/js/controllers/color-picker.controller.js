@@ -111,7 +111,6 @@
     $timeout(function () {
         self.showElements = true;
         $timeout(self.init(self.color), 100);
-        self.shared.notifySave({ 'isSuccess': false, 'msg': 'Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.' });
     }, 200);
 
     self.pan = function (e, type) {
