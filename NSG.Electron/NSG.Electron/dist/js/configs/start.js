@@ -14,18 +14,21 @@
         electron.ipcRenderer.send('start-capture');
     }
 
+    electron.ipcRenderer.removeAllListeners(['stream-ready-for-capture-enabled']);
     electron.ipcRenderer.on('stream-ready-for-capture-enabled', (event, arg) => {
         self.canvasActivated = true;
         if (!scope.$$phase)
             scope.$digest();
     });
 
+    electron.ipcRenderer.removeAllListeners(['reset-enable-capture']);
     electron.ipcRenderer.on('reset-enable-capture', (event, arg) => {
         self.canvasActivated = false;
         if (!scope.$$phase)
             scope.$digest();
     });
 
+    electron.ipcRenderer.removeAllListeners(['launch-resized']);
     electron.ipcRenderer.on('launch-resized', (event, arg) => {
         self.showJumpToMain = true;
         if (!scope.$$phase)

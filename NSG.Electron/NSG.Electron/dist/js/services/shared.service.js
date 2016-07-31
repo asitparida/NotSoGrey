@@ -587,6 +587,7 @@
         _defer = $q.defer();
         try {
             if (self.electron != null) {
+                self.electron.ipcRenderer.removeAllListeners(['get-dribbble-reply']);
                 self.electron.ipcRenderer.send('get-dribbble', tinycolor(color).toHex());
                 self.electron.ipcRenderer.on('get-dribbble-reply', (event, arg) => {
                     _defer.resolve(arg);
@@ -607,6 +608,7 @@
         _defer = $q.defer();
         try {
             if (self.electron != null) {
+                self.electron.ipcRenderer.removeAllListeners(['get-hexcodename-reply']);
                 self.electron.ipcRenderer.send('get-hexcodename', tinycolor(color).toHexString());
                 self.electron.ipcRenderer.on('get-hexcodename-reply', (event, arg) => {
                     _defer.resolve(arg || color);
