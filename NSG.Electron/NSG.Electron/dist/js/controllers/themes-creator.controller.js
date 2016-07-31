@@ -60,6 +60,7 @@
                 _colors.push({ 'hex': _tc.toHexString(), 'rgb': _tc.toRgbString() });
             });
             let electron = require('electron');
+            electron.ipcRenderer.removeAllListeners(['write-scss-reply']);
             electron.ipcRenderer.send('write-scss', JSON.stringify(_colors));
             electron.ipcRenderer.on('write-scss-reply', (event, arg) => {
                 self.sharePanelShow = false;
@@ -75,6 +76,7 @@
             var canvasBuffer = require('electron-canvas-to-buffer');
             var buffer = canvasBuffer(_canvas, 'image/png');
             let electron = require('electron');
+            electron.ipcRenderer.removeAllListeners(['write-png-reply']);
             electron.ipcRenderer.send('write-png', buffer);
             electron.ipcRenderer.on('write-png-reply', (event, arg) => {
                 self.sharePanelShow = false;
@@ -88,6 +90,7 @@
         try {
             var _canvas = self.getCanvasFromColors(self.colors);
             let electron = require('electron');
+            electron.ipcRenderer.removeAllListeners(['write-svg-reply']);
             electron.ipcRenderer.send('write-svg', _canvas.toDataURL());
             electron.ipcRenderer.on('write-svg-reply', (event, arg) => {
                 self.sharePanelShow = false;
@@ -144,6 +147,7 @@
     self.writeToPDF = function () {
         try {
             let electron = require('electron');
+            electron.ipcRenderer.removeAllListeners(['write-pdf-reply']);
             electron.ipcRenderer.send('write-pdf');
             electron.ipcRenderer.on('write-pdf-reply', (event, arg) => {
                 self.sharePanelShow = false;
@@ -157,6 +161,7 @@
         try {
             var _json = self.getASESJson(self.colors);
             let electron = require('electron');
+            electron.ipcRenderer.removeAllListeners(['write-ase-reply']);
             electron.ipcRenderer.send('write-ase', _json);
             electron.ipcRenderer.on('write-ase-reply', (event, arg) => {
                 self.sharePanelShow = false;

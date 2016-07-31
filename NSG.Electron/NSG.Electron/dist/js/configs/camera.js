@@ -41,6 +41,8 @@
         });
     }, 200);
 
+
+    electron.ipcRenderer.removeAllListeners(['capture-desktop']);
     electron.ipcRenderer.on('capture-desktop', (event, arg) => {
         self.stop = true;
         $timeout(function () {
