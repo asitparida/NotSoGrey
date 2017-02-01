@@ -25,11 +25,27 @@ chrome.browserAction.onClicked.addListener(function (tab) {
         }
     })
 });
+chrome.windows.onFocusChanged.addListener(function(data){
+                    if(data != _NSGClientWindowId && _chromeWindowCreated){
+                         chrome.windows.remove(_NSGClientWindowId, function(data){})
+                        _chromeWindowCreated  = false;
+                    }
+                });
+
+chrome.windows.onRemoved.addListener(function(data){
+                    if(data == _NSGClientWindowId && _chromeWindowCreated){
+                        _chromeWindowCreated  = false;
+                    }
+                });
 
 chrome.runtime.onMessage.addListener(function (req, sender, sendResponse) {
     if (req.type == 'NSG_COLOR_AVAILABLE') {
         chrome.windows.remove(_NSGCaptureId, function () {
             chrome.storage.local.set({ 'NSG_COLOR_DATA': req.data }, function () { });
+            if(_chromeWindowCreated){
+                chrome.windows.remove(_NSGClientWindowId, function(data){})
+                _chromeWindowCreated  = false;
+            }
             if (!_chromeWindowCreated) {
                 chrome.windows.create({
                     url: '../index.html',
