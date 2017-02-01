@@ -91,6 +91,7 @@
     <Content Include="package.json" />
     <Content Include="manifest.json" />
     <Content Include="scss\app.scss" />
+    <Content Include="dist\jsons\themes-popular.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

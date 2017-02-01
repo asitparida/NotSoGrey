@@ -1,7 +1,8 @@
 ﻿angular.module('NotSoGrey')
-.service("SharedService", ["$http", "$q", "$window", "$state", function ($http, $q, $window, $state) {
+.service("SharedService", ["$http", "$q", "$window", "$state", "$resource", function ($http, $q, $window, $state, $resource) {
     var self = this;
     self.state = $state;
+    self.resource = $resource;
     try {
         var electron = require('electron');
         var _currWindow = electron.remote.getCurrentWindow();
@@ -435,7 +436,7 @@
 
     self.generateThemes = function () {
         var _themeDefer = $q.defer();
-        self.resource('dist/js/jsons/themes-popular.json').query().$promise
+        self.resource('dist/jsons/themes-popular.json').query().$promise
             .then(function (data) {
                 var _color = tinycolor(self.activeColor).toHsv();
                 var _result = [];
