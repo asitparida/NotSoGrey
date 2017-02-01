@@ -5,9 +5,11 @@
     var ctx = _canvas.getContext('2d')
     var _img = new Image();
     _img.src = data.imgData;
-    ctx.drawImage(_img, 0, 0);
+    ctx.drawImage(_img, 0, 0, _canvas.width, _canvas.height);
     setTimeout(function () {
-        _canvas.style.marginTop = 0.5 * (window.innerHeight - _canvas.height) + 'px';
+        if(window.innerHeight - _canvas.height > 0)
+            _canvas.style.marginTop = 0.5 * (window.innerHeight - _canvas.height) + 'px';
+            _canvas.focus();
     }, 100);
 }
 
@@ -26,12 +28,12 @@ document.addEventListener('DOMContentLoaded', function () {
         var message = 'Mouse position: ' + mousePos.x + ',' + mousePos.y;
         var _imgData = canvas.getContext("2d").getImageData(mousePos.x, mousePos.y, 1, 1).data;
         var _rgb = { r: _imgData[0], g: _imgData[1], b: _imgData[2] };
-        console.log(_rgb);
         chrome.runtime.sendMessage({ type: 'NSG_COLOR_AVAILABLE', data : _rgb }, function (data) {
             console.log(0);
         })
     }, false);
     chrome.storage.local.get('NSG_IMG', function (data) {
         fnLoadImg(data['NSG_IMG']);
+        document.getElementById('nsg_cnv').focus();
     });
 })

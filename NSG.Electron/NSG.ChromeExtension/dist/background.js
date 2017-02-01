@@ -37,7 +37,7 @@ chrome.runtime.onMessage.addListener(function (req, sender, sendResponse) {
                     focused: true,
                     height: 540,
                     width: 340,
-                    top: screen.height - 540 - 45,
+                    top: screen.height - 540 - 90,
                     left: screen.width - 340 - 30
                 }, function (data) {
                     _chromeWindowCreated = true;
