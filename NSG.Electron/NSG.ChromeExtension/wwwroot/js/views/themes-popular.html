@@ -1,0 +1,12 @@
+﻿<div ng-controller="ThemesPopularController as themesPopular" class="anim-slide-left">
+    <div class="nsg-mid-view-container we36 nsg-themes-popular">
+        <div class="nsg-theme-item" ng-repeat="theme in themesPopular.themes" ng-click="themesPopular.openInEditor(theme)">
+            <div class="nsg-theme-color-container">
+                <div class="nsg-theme-color" ng-repeat="color in theme.colors track by $index" ng-style="{'background-color': color}"></div>                
+            </div>
+        </div>
+    </div>
+    <div class="nsg-bottom-content nsg-color-contrast">
+        <label class="nsg-title" ng-click="app.goThemesCreator()"><span style="margin-right:5px;"> + </span><span></span>Create Theme</label>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+﻿<div ng-controller="ColorContrastController as colorContrast" class="anim-slide-left">
+    <div class="nsg-mid-view-container we36 nsg-color-contrast">
+        <div class="nsg-color-details-color-banner sample-contrast">
+            <div class="nsg-color-item">
+                <div class="nsg-color-fill">
+                    <div class="fill-box no-shadow" ng-style="{'background-color': colorContrast.backcolor1}">
+                        <md-input-container class="md-block nsg-color-input-container" flex-gt-sm ng-class="{'light':colorContrast.color1IsLight}">
+                            <label>Color #1</label>
+                            <input class="nsg-color-input" ng-model="colorContrast.color1" ng-change="colorContrast.colorChanged()" />
+                        </md-input-container>
+                    </div>
+                </div>
+            </div>
+            <div class="nsg-color-item">
+                <div class="nsg-color-fill">
+                    <div class="fill-box no-shadow" ng-style="{'background-color': colorContrast.backcolor2}">
+                        <md-input-container class="md-block nsg-color-input-container" flex-gt-sm ng-class="{'light':colorContrast.color2IsLight}">
+                            <label>Color #2</label>
+                            <input class="nsg-color-input" ng-model="colorContrast.color2" ng-change="colorContrast.colorChanged()" />
+                        </md-input-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="nsg-color-details contrast-ratio-box">
+            <div class="box-holder">
+                <div class="nsg-color-details-box w100">
+                    <label class="nsg-color-details-box-label w100">Color  Contrast</label>
+                    <label class="nsg-color-contrast-label w100">
+                        <span class="span-part" ng-bind="colorContrast.ratio"></span>:<span class="span-part">1</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="nsg-bottom-content nsg-color-contrast">
+        <md-input-container class="nsg-color-contrast-mode">
+            <md-select ng-model="colorContrast.mode" data-md-container-class="nsg-contrast-mode-toggle" ng-style="{'color': '#000'}" ng-change="colorContrast.colorChanged()">
+                <md-select-header class="nsg-contrast-creator-select-header">
+                    <label>Choose Vision Type</label>
+                </md-select-header>
+                <md-optgroup label="modes">
+                    <md-option ng-value="item" ng-repeat="item in colorContrast.colorContrastModes"
+                               ng-style="{'color': '#000'}">{{item.name}}</md-option>
+                </md-optgroup>
+            </md-select>
+        </md-input-container>
+    </div>
+</div>
