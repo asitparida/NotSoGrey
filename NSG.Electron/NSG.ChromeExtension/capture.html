@@ -5,13 +5,33 @@
     <meta charset="utf-8" />
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://appsforoffice.microsoft.com https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
     <style>
-        canvas {
+        #nsg_cnv {
             cursor: url(dist/images/app_cursor.png) 25 25, auto;
         }
+
+        canvas {
+            position: absolute;
+            top: -200%;
+        }
+
+        .large {
+            width: 150px;
+            height: 150px;
+            position: absolute;
+            border-radius: 100%;
+            box-shadow: 0 0 0 7px rgba(255, 255, 255, 0.85), 0 0 7px 7px rgba(0, 0, 0, 0.25), inset 0 0 40px 2px rgba(0, 0, 0, 0.25);
+            background: no-repeat;
+            display: none;
+            transform: scale(1.5);
+        }
     </style>
-</head>
-<body style="overflow:hidden;margin:0;">
-    <canvas id="nsg_cnv" style="width:100%; height:100%;"></canvas>
     <script type="text/javascript" src="dist/draw.js"></script>
+    <script type="text/javascript" src="lib/js/base/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="dist/jmag.js"></script>
+</head>
+<body class="magnify" style="overflow:hidden;margin:0; position: relative;">
+    <canvas id="nsg_canvas" style="width:100%; height:100%;"></canvas>
+    <div class="large" id="nsg_large"></div>
+    <img id="nsg_img" style="width:100%;height:100%;display:block;margin: 0 auto;" />
 </body>
 </html>
