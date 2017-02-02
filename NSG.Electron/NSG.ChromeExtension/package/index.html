@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-csp ng-app="NotSoGrey">
+<head>
+    <meta charset="UTF-8">
+    <title>Not So Grey</title>
+    <link rel="stylesheet" href="dist/min/css/lib.min.css" />
+    <link rel="stylesheet" href="dist/min/css/app.min.css" />
+
+    <script type="text/javascript" src="dist/min/js/lib.min.js"></script>
+    <script type="text/javascript" src="dist/min/js/app.min.js"></script>
+
+</head>
+<body ng-controller="AppController as app" style="height:540px;overflow-y:hidden;width:340px;">
+    <div class="app-content">
+        <div class="spinner-holder" ng-hide="app.hideLoader" ng-style="{'background-color':app.shared.activeColor}">
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+        </div>
+        <div class="app-current-color" ng-show="app.showCurrentColor" ng-style="{'background-color':app.shared.activeColor}"></div>
+        <div class="ui-view-container-main enter-page anim-in-out anim-slide-left" ui-view data-anim-speed="340" data-anim-sync="true"></div>
+    </div>
+    <div class="app-nav-content">
+        <div class="nsg-app-nav">
+            <div class="icon-container-holders">
+                <div class="nsg-action-holder" ng-repeat="item in app.shared.actions" ng-style="{'width': (100 / (app.shared.actions.length) - 1) + '%'}">
+                    <app-action fn="{{item.fn}}" icon="{{item.icon}}" active="{{item.active}}" actitle="{{item.title}}"></app-action>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

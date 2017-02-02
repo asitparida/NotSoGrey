@@ -107,3 +107,21 @@ gulp.task('default:app:js', function () {
     gulp.watch(
         ['wwwroot/js/**/*.js', 'wwwroot/js/**/*.html'], ['uglify:minify:app:js']);
 });
+
+// Clean the distributable css directory
+gulp.task('minify:clean:package', function () {
+    return del('package/');
+});
+
+gulp.task('build:package:chrome',function(){
+    pump([
+        gulp.src('dist/**/**/*', { "base" : "." }),
+        gulp.dest('package'),
+        gulp.src([
+            'manifest.json',
+            'capture.html',
+            'index.html'
+        ]),
+        gulp.dest('package')
+    ]);
+});
