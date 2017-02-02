@@ -1,4 +1,4 @@
-﻿function fnLoadImg(data) {
+function fnLoadImg(data) {
     var _canvasImg = document.getElementById('nsg_img');
     _canvasImg.width = data.width;
     _canvasImg.height = data.height;

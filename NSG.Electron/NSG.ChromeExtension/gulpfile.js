@@ -115,7 +115,7 @@ gulp.task('minify:clean:package', function () {
 
 gulp.task('build:package:chrome',function(){
     pump([
-        gulp.src('dist/**/**/*', { "base" : "." }),
+        gulp.src(['dist/**/*'], { "base": "." }),
         gulp.dest('package'),
         gulp.src([
             'manifest.json',

@@ -1,4 +1,4 @@
-﻿var _NSGCaptureId = '';
+var _NSGCaptureId = '';
 var _NSGClientWindowId = null;
 var _chromeWindowCreated = false;
 
