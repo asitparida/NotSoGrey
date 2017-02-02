@@ -5,7 +5,10 @@
   "minimum_chrome_version": "29",
   "browser_action": {
     "default_icon": "dist/images/nsg-icon-popup.png"
-  },  
+  },
+  "icons": {
+    "128": "dist/images/app_icon_chrome_128.png"
+  },
   "background": {
     "scripts": [ "dist/background.js" ]
   },

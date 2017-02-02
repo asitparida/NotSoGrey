@@ -1,6 +1,12 @@
 ﻿var _NSGCaptureId = '';
 var _NSGClientWindowId = null;
 var _chromeWindowCreated = false;
+var _isWindows = false;
+
+chrome.runtime.getPlatformInfo(function (info) {    
+    if (info.os == "win")
+        _isWindows = true;
+})
 
 chrome.browserAction.onClicked.addListener(function (tab) {
     chrome.tabs.query({ currentWindow: true, active: true }, function (data) {
@@ -65,7 +71,7 @@ chrome.runtime.onMessage.addListener(function (req, sender, sendResponse) {
                     focused: true,
                     height: 540,
                     width: 340,
-                    top: screen.height - 540 - 90,
+                    top: _isWindows != true ? screen.height - 540 - 90 : screen.height - 540 - 60,
                     left: screen.width - 340 - 30
                 }, function (data) {
                     _chromeWindowCreated = true;

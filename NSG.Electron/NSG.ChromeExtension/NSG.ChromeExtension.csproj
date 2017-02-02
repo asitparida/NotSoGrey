@@ -68,8 +68,10 @@
   <ItemGroup>
     <Content Include="capture.html" />
     <Content Include="dist\draw.js" />
+    <Content Include="dist\images\app_icon_chrome_128.png" />
     <Content Include="dist\images\nsg-icon-popup.png" />
     <Content Include="dist\jmag.js" />
+    <Content Include="dist\jquery-1.10.2.min.js" />
     <Content Include="dist\min\css\app.min.css" />
     <Content Include="dist\min\css\lib.min.css" />
     <Content Include="dist\min\js\app.min.js" />
