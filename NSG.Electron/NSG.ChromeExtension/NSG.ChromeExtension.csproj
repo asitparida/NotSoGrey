@@ -78,6 +78,8 @@
     <Content Include="dist\min\js\lib.min.js" />
     <Content Include="gulpfile.js" />
     <Content Include="lib\js\base\jquery-1.10.2.min.js" />
+    <Content Include="nsg_440.png" />
+    <Content Include="nsg_920.png" />
     <Content Include="packages.config" />
     <Content Include="wwwroot\js\jsons\themes-popular.json" />
     <Content Include="dist\fonts\quicksand\Quicksand-Bold.eot" />
