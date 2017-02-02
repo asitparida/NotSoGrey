@@ -1,14 +1,11 @@
 ﻿{
   "name": "Not So Grey",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "manifest_version": 2,
   "minimum_chrome_version": "29",
   "browser_action": {
-    "default_icon": "dist/images/icon@2x.png"
-  },
-  "icons": {
-    "128": "dist/images/icon@2x.png"
-  },
+    "default_icon": "dist/images/nsg-icon-popup.png"
+  },  
   "background": {
     "scripts": [ "dist/background.js" ]
   },
