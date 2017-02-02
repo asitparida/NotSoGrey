@@ -113,10 +113,17 @@ gulp.task('minify:clean:package', function () {
     return del('package/');
 });
 
-gulp.task('build:package:chrome',function(){
+gulp.task('build:package:chrome:dist',function(){
     pump([
-        gulp.src(['dist/**/*'], { "base": "." }),
-        gulp.dest('package'),
+        gulp.src([
+            'dist/**/*'            
+        ], { "base": "." }),
+        gulp.dest('package')        
+    ]);
+});
+
+gulp.task('build:package:chrome:static', function () {
+    pump([
         gulp.src([
             'manifest.json',
             'capture.html',
@@ -125,3 +132,5 @@ gulp.task('build:package:chrome',function(){
         gulp.dest('package')
     ]);
 });
+
+gulp.task('build:package:chrome', ['build:package:chrome:dist', 'build:package:chrome:static']);
