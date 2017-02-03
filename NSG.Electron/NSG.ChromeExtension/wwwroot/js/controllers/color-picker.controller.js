@@ -1,7 +1,8 @@
 ﻿angular.module('NotSoGrey')
-.controller('ColorPickerController', ['$state', 'SharedService', '$window', '$timeout', function ($state, SharedService, $window, $timeout) {
+.controller('ColorPickerController', ['$state', 'SharedService', '$window', '$timeout', '$scope', function ($state, SharedService, $window, $timeout, $scope) {
     var self = this;
     self.state = $state;
+    self.scope = $scope;
     self.shared = SharedService;
     self.window = $window;
     self.showElements = false;
@@ -58,6 +59,8 @@
 
         self.canvas.instance = document.getElementById(self.canvasIdCurrent);
         self.canvas.instanceBefore = document.getElementById(self.canvasIdBefore);
+        self.canvas.leftBefore = -(window.innerWidth);
+        self.canvas.leftAfter = window.innerWidth;
         self.canvas.instanceAfter = document.getElementById(self.canvasIdAfter);
         self.canvas.instance.height = self.canvas.instanceBefore.height = self.canvas.instanceAfter.height = _height - 48;
         self.canvas.instance.width = self.canvas.instanceBefore.width = self.canvas.instanceAfter.width = _width;
@@ -105,6 +108,12 @@
         }
         self.shared.copyHexToClipboard();
     }
+
+    angular.element(self.window).bind('resize', function () {                
+        self.init(self.shared.activeColor);
+        if (!self.scope.$$phase)
+            self.scope.$apply();
+    });
 
     self.shared.initPicker = self.init;
 
@@ -201,19 +210,20 @@
         }
 
         self.panHorzEnd = function (e) {
-            var _skipBefore = _skipAfter = false;
-            if (self.canvas.leftBefore >= -170) {
+            var _skipBefore = false;
+            var _skipAfter = false;
+            if (self.canvas.leftBefore >= -(window.innerWidth * 0.5)) {
                 self.init(self.canvas.colorBefore);
                 _skipBefore = true;
             }
-            if (self.canvas.leftAfter <= 170) {
+            if (self.canvas.leftAfter <= (window.innerWidth * 0.5)) {
                 self.init(self.canvas.colorAfter);
                 _skipAfter = true;
             }
             if (!_skipBefore) document.getElementById(self.canvasIdBefore).className += ' anim';
             if (!_skipAfter) document.getElementById(self.canvasIdAfter).className += ' anim';
-            self.canvas.leftBefore = -340;
-            self.canvas.leftAfter = 340;
+            self.canvas.leftBefore = -(window.innerWidth);
+            self.canvas.leftAfter = window.innerWidth;
             self.panLeftStart = false;
             self.panRightStart = false;
             $timeout(function () {
