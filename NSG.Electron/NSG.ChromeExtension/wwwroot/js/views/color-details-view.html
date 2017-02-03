@@ -1,0 +1,57 @@
+﻿<div class="nsg-color-details">
+    <div class="box-holder">
+        <div class="nsg-color-details-box">
+            <label class="nsg-color-details-box-label w100">CMYK</label>
+            <div class="nsg-color-details-box-content">
+                <label class="nsg-color-detail">C<span class="value">{{color.cmyk.c}}%</span></label>
+                <label class="nsg-color-detail">M<span class="value">{{color.cmyk.m}}%</span></label>
+                <label class="nsg-color-detail">Y<span class="value">{{color.cmyk.y}}%</span></label>
+                <label class="nsg-color-detail">K<span class="value">{{color.cmyk.k}}%</span></label>
+            </div>
+        </div>
+        <div class="icon-container nsg-color-details-box-copy" ng-click="color.copyCMYK()">
+            <i class="icon icon-png copy"></i>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="box-holder">
+        <div class="nsg-color-details-box">
+            <label class="nsg-color-details-box-label w100">RGB</label>
+            <div class="nsg-color-details-box-content">
+                <label class="nsg-color-detail">R<span class="value">{{color.rgb.r}}%</span></label>
+                <label class="nsg-color-detail">G<span class="value">{{color.rgb.g}}%</span></label>
+                <label class="nsg-color-detail">B<span class="value">{{color.rgb.b}}%</span></label>
+            </div>
+        </div>
+        <div class="icon-container nsg-color-details-box-copy" ng-click="color.copyRGB()">
+            <i class="icon icon-png copy"></i>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="box-holder">
+        <div class="nsg-color-details-box">
+            <label class="nsg-color-details-box-label w100">HSB</label>
+            <div class="nsg-color-details-box-content">
+                <label class="nsg-color-detail">H<span class="value">{{color.hsb.h}}<span class="icon-degree">O</span></span></label>
+                <label class="nsg-color-detail">S<span class="value">{{color.hsb.s}}%</span></label>
+                <label class="nsg-color-detail">B<span class="value">{{color.hsb.b}}%</span></label>
+            </div>
+        </div>
+        <div class="icon-container nsg-color-details-box-copy" ng-click="color.copyHSB()">
+            <i class="icon icon-png copy"></i>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="box-holder">
+        <div class="nsg-color-details-box">
+            <label class="nsg-color-details-box-label w100">HEX</label>
+            <div class="nsg-color-details-box-content">
+                <label class="nsg-color-detail">#<span class="value">{{color.hex}}</span></label>
+            </div>
+        </div>
+        <div class="icon-container nsg-color-details-box-copy" ng-click="color.copyHex()">
+            <i class="icon icon-png copy"></i>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
