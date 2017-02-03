@@ -580,7 +580,7 @@ body {
         padding: 0 10px;
         width: 100%;
         margin: 0;
-        text-align:center
+        text-align: center;
     }
 }
 
@@ -590,7 +590,7 @@ body {
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar;
-    outline: none;    
+    outline: none;
 
     &.we48 {
         height: calc(100vh - 48px);
@@ -884,17 +884,17 @@ body {
                     text-align: right;
                     display: inline;
                     width: 24px;
-                    opacity:0.60;
-                    transition:0.3s linear;
+                    opacity: 0.60;
+                    transition: 0.3s linear;
 
-                    &.active{
-                        opacity:1;
+                    &.active {
+                        opacity: 1;
                     }
                 }
 
                 span {
                     color: #fff;
-                    opacity:0.60;
+                    opacity: 0.60;
                     height: 20px;
                     margin: 0;
                     padding: 0;
@@ -1764,6 +1764,10 @@ body {
 
     &.copy {
         background-image: url(../../images/icon_png_copy_black.png);
+
+        &.white {
+            background-image: url(../../images/icon_png_copy.png);
+        }
     }
 
     &.keyboard48 {

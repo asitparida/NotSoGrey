@@ -3,7 +3,7 @@ var _NSGClientWindowId = null;
 var _chromeWindowCreated = false;
 var _isWindows = false;
 
-chrome.runtime.getPlatformInfo(function (info) {    
+chrome.runtime.getPlatformInfo(function (info) {
     if (info.os == "win")
         _isWindows = true;
 })
@@ -32,7 +32,7 @@ chrome.browserAction.onClicked.addListener(function (tab) {
                         {
                             focused: true
                         }, function (data) {
-                            chrome.tabs.query({currentWindow: true}, function(data){
+                            chrome.tabs.query({ currentWindow: true }, function (data) {
                                 console.log(data);
                             });
                         });
@@ -42,13 +42,13 @@ chrome.browserAction.onClicked.addListener(function (tab) {
     })
 });
 
-chrome.windows.onFocusChanged.addListener(function (data) {
-    if (data != _NSGClientWindowId && _chromeWindowCreated) {
-        console.log('CLIENT removed')
-        chrome.windows.remove(_NSGClientWindowId, function (data) { })
-        _chromeWindowCreated = false;
-    }
-});
+//chrome.windows.onFocusChanged.addListener(function (data) {
+//    if (data != _NSGClientWindowId && _chromeWindowCreated) {
+//        console.log('CLIENT removed')
+//        chrome.windows.remove(_NSGClientWindowId, function (data) { })
+//        _chromeWindowCreated = false;
+//    }
+//});
 
 chrome.windows.onRemoved.addListener(function (data) {
     if (data == _NSGClientWindowId && _chromeWindowCreated) {
@@ -87,9 +87,19 @@ chrome.runtime.onMessage.addListener(function (req, sender, sendResponse) {
             }
         });
     }
-    else if(req.type == 'NSG_COLOR_AVAILABLE_OPEN_DRIBBBLE'){
+    else if (req.type == 'NSG_COLOR_AVAILABLE_OPEN_DRIBBBLE') {
         console.log(req.data);
-        chrome.tabs.create({ url: 'https://dribbble.com/colors/' + req.data});
+        chrome.tabs.create({ url: 'https://dribbble.com/colors/' + req.data });
+    }
+    else if (req.type == 'COPY_TO_CLIPBOARD') {
+        const input = document.createElement('input');
+        input.style.position = 'fixed';
+        input.style.opacity = 0;
+        input.value = req.data;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand('Copy');
+        document.body.removeChild(input);
     }
 });
 

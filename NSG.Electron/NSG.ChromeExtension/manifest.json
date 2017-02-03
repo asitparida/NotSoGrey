@@ -16,6 +16,8 @@
     "tabs",
     "activeTab",
     "storage",
-    "background"
+    "background",
+    "clipboardWrite",
+    "clipboardRead"
   ]
 }

@@ -16,8 +16,7 @@
         }
 
         self.shared.activeColorChanged = function (_hex) {
-            self.shared.activeColor = _hex;
-            console.log(self.shared.activeColor);
+            self.shared.activeColor = _hex;            
             if (self.state.current.name = 'ColorPicker') {
                 self.shared.initPicker(self.shared.activeColor);
             }
@@ -114,6 +113,6 @@
                 })
             }
             else self.state.go('DribbbleShots');
-        }
+        }        
 
     }])

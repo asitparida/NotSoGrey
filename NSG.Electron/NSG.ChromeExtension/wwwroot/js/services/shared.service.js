@@ -12,7 +12,7 @@
     }
     try {
         if (chrome) {
-            if (chrome.storage) {                
+            if (chrome.storage) {
                 chrome.storage.onChanged.addListener(function (changes, areaName) {
                     if (areaName == 'local' && changes['NSG_COLOR_DATA'] != null && changes['NSG_COLOR_DATA'] != {} && changes['NSG_COLOR_DATA']) {
                         if (typeof self.activeColorChanged !== 'undefined' && typeof self.activeColorChanged === 'function') {
@@ -201,8 +201,19 @@
     }
 
     self.writeToClipboard = function (data) {
-        var electron = require('electron');
-        electron.clipboard.writeText(data.toString());
+        if (chrome) {
+            chrome.runtime.sendMessage({ type: 'COPY_TO_CLIPBOARD', data: data }, function (data) {
+                console.log(0);
+            })
+        }
+        else {
+            var electron = require('electron');
+            electron.clipboard.writeText(data.toString());
+        }
+    }
+
+    self.copyHexToClipboard = function () {
+        self.writeToClipboard(self.activeColor);
     }
 
     self.getCodeOnlyFromHexCode = function (hex) {
