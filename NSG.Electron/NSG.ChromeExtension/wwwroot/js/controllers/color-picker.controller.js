@@ -106,7 +106,7 @@
                     self.showBadge = true;
             }, 200);
         }
-        self.shared.copyHexToClipboard();
+        //self.shared.copyHexToClipboard();
     }
 
     angular.element(self.window).bind('resize', function () {                
