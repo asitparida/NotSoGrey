@@ -2,6 +2,7 @@
 .service("SharedService", ["$http", "$q", "$window", "$state", "$resource", function ($http, $q, $window, $state, $resource) {
     var self = this;
     self.state = $state;
+    self.darkTheme = false;
     self.resource = $resource;
     try {
         var electron = require('electron');
@@ -198,6 +199,7 @@
         angular.forEach(items, function (item) {
             self.actions.push(angular.copy(item));
         });
+        self.darkTheme = false;
     }
 
     self.writeToClipboard = function (data) {

@@ -14,6 +14,7 @@
         { id: 3, name: 'copy', icon: 'icon-png copy white', fn: 'app.shared.copyHexToClipboard()', title: 'Copy Hex Code', active: true },
     ];
     self.shared.loadActions(_actions, 'ColorPicker');
+    self.shared.darkTheme = true;
     self.topnav = { 'isActive1': true, 'isActive2': false, 'isActive3': false };
     self.name = 'Diablo Red';
     console.log(self.shared);

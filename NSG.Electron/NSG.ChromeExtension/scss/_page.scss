@@ -477,11 +477,28 @@ body {
 }
 
 .nsg-app-nav {
-    background-color: #000;
+    background-color: #f6f6f6;
     height: 48px;
     width: 100%;
     text-align: center;
-    border-top: 1px solid #000;
+    border-top: 1px solid #f0f0f0;
+
+    &.dark {
+        background-color: #000;
+        border-top-color: #000;
+
+        .icon-container {
+            .icon {
+                background-color: #fff;
+            }
+        }
+    }
+
+    .icon-container {
+        .icon {
+            background-color: #565656;
+        }
+    }
 
     &.topShadow {
         -webkit-box-shadow: 0px 0px 26px 0px rgba(0,0,0,0.18);
@@ -544,7 +561,6 @@ body {
 
         .icon-container {
             color: #fff;
-            opacity: 0.50;
             display: inline-block;
             width: 48px;
             height: 48px;
@@ -807,12 +823,18 @@ body {
         float: right;
         color: #A0A0A0;
         font-size: medium;
+
+        .icon {
+            left: -6px;
+            opacity: 0.50;
+            zoom: 0.75;
+        }
     }
 }
 
 .nsg-color-details-edit {
     height: 300px;
-    background: #000;
+    background: #fff;
     width: 100%;
     bottom: 0;
     position: absolute;
@@ -830,6 +852,7 @@ body {
 
                 md-tabs-wrapper {
                     height: 36px;
+                    border: none;
                 }
 
                 md-tabs-content-wrapper {
@@ -843,7 +866,7 @@ body {
             }
 
             md-tab-item {
-                color: #fff;
+                color: #000;
                 font-family: 'Quicksand';
                 font-weight: 400;
                 font-size: small;
@@ -873,7 +896,7 @@ body {
                 vertical-align: text-bottom;
 
                 .nsg-edit-input {
-                    color: #fff;
+                    color: #000;
                     height: 20px;
                     margin: 0;
                     padding: 0;
@@ -893,7 +916,7 @@ body {
                 }
 
                 span {
-                    color: #fff;
+                    color: #000;
                     opacity: 0.60;
                     height: 20px;
                     margin: 0;
@@ -931,7 +954,7 @@ body {
 
                     &:focus,
                     &:active {
-                        color: #ffffff;
+                        color: #000;
                         border-bottom-color: #707070;
                     }
                 }
@@ -961,11 +984,11 @@ body {
 
                     ._md-thumb {
                         border-radius: 0;
-                        background: #000;
+                        background: #fff;
                         border: 1px solid #a0a0a0;
-                        color: #a0a0a0;
+                        color: #000;
                         font-family: 'Quicksand';
-                        font-weight: 400;
+                        font-weight: 600;
                         font-size: medium;
                         text-transform: uppercase;
                         width: 30px;
@@ -997,25 +1020,25 @@ body {
                         ._md-track-container {
 
                             ._md-track-fill {
-                                background: #fff;
+                                background: #000;
                                 opacity: 1;
                             }
                         }
 
                         ._md-thumb {
-                            color: #fff;
-                            border-color: #fff;
+                            color: #000;
+                            border-color: #000;
                         }
                     }
 
                     ._md-track-container {
                         ._md-track {
-                            background: #fff;
+                            background: #000;
                             opacity: 0.10;
                         }
 
                         ._md-track-fill {
-                            background: #fff;
+                            background: #000;
                             opacity: 0.33;
                         }
 
@@ -1642,7 +1665,8 @@ body {
 .icon-app-logo {
     width: 24px;
     height: 24px;
-    background-image: url(../../images/app_icon_24.png);
+    mask: url(../../images/app_icon_24.png);
+    -webkit-mask: url(../../images/app_icon_24.png);
     background-repeat: no-repeat;
     top: 5px;
 }
@@ -1650,7 +1674,8 @@ body {
 .icon-app-dribbble {
     width: 24px;
     height: 24px;
-    background-image: url(../../images/app_dribble_24.png);
+    mask: url(../../images/app_dribble_24.png);
+    -webkit-mask: url(../../images/app_dribble_24.png);
     background-repeat: no-repeat;
     top: 5px;
 }
@@ -1658,7 +1683,8 @@ body {
 .icon-app-theme {
     width: 24px;
     height: 24px;
-    background-image: url(../../images/app_theme_24.png);
+    mask: url(../../images/app_theme_24.png);
+    -webkit-mask: url(../../images/app_theme_24.png);
     background-repeat: no-repeat;
     top: 5px;
 }
@@ -1666,7 +1692,8 @@ body {
 .icon-app-contrast {
     width: 24px;
     height: 24px;
-    background-image: url(../../images/app_contrast_24.png);
+    mask: url(../../images/app_contrast_24.png);
+    -webkit-mask: url(../../images/app_contrast_24.png);
     background-repeat: no-repeat;
     top: 5px;
 }
@@ -1674,7 +1701,8 @@ body {
 .icon-app-color-picker {
     width: 24px;
     height: 24px;
-    background-image: url(../../images/app_color_picker_24.png);
+    mask: url(../../images/app_color_picker_24.png);
+    -webkit-mask: url(../../images/app_color_picker_24.png);
     background-repeat: no-repeat;
     top: 5px;
 }
@@ -1682,15 +1710,16 @@ body {
 .icon-app-proper {
     width: 36px;
     height: 36px;
-    background-image: url(../../images/app_icon_48_proper.png);
+    mask: url(../../images/app_icon_48_proper.png);
+    -webkit-mask: url(../../images/app_icon_48_proper.png);
     background-repeat: no-repeat;
     top: 6px;
     left: -6px;
 }
 
 .icon-palette-share {
-    width: 36px;
-    height: 36px;
+    width: 24px;
+    height: 24px;
     background-repeat: no-repeat;
 
     &.svg {
@@ -1720,70 +1749,87 @@ body {
     background-repeat: no-repeat;
     background-size: contain;
     position: relative;
-    top: 6px;
-
+    /*top: 6px;*/
     &.add {
-        background-image: url(../../images/icon_png_add.png);
+        mask: url(../../images/icon_png_add.png);
+        -webkit-mask: url(../../images/icon_png_add.png);
     }
 
     &.share {
-        background-image: url(../../images/icon_png_share.png);
+        mask: url(../../images/icon_png_share.png);
+        -webkit-mask: url(../../images/icon_png_share.png);
     }
 
     &.back {
-        background-image: url(../../images/icon_png_back.png);
+        top: 0;
+        mask: url(../../images/icon_png_back.png);
+        -webkit-mask: url(../../images/icon_png_back.png);
     }
 
     &.back_black {
-        background-image: url(../../images/icon_png_back_black.png);
+        mask: url(../../images/icon_png_back_black.png);
+        -webkit-mask: url(../../images/icon_png_back_black.png);
     }
 
     &.shuffle {
-        background-image: url(../../images/icon_png_shuffle.png);
+        mask: url(../../images/icon_png_shuffle.png);
+        -webkit-mask: url(../../images/icon_png_shuffle.png);
     }
 
     &.reject {
-        background-image: url(../../images/icon_png_reject.png);
+        mask: url(../../images/icon_png_reject.png);
+        -webkit-mask: url(../../images/icon_png_reject.png);
     }
 
     &.accept {
-        background-image: url(../../images/icon_png_accept.png);
+        mask: url(../../images/icon_png_accept.png);
+        -webkit-mask: url(../../images/icon_png_accept.png);
     }
 
     &.accept_black {
-        background-image: url(../../images/icon_png_accept_black.png);
+        mask: url(../../images/icon_png_accept_black.png);
+        -webkit-mask: url(../../images/icon_png_accept_black.png);
     }
 
     &.edit {
-        background-image: url(../../images/icon_png_edit.png);
+        mask: url(../../images/icon_png_edit.png);
+        -webkit-mask: url(../../images/icon_png_edit.png);
 
         &.black {
-            background-image: url(../../images/icon_png_edit_black.png);
+            mask: url(../../images/icon_png_edit_black.png);
+            -webkit-mask: url(../../images/icon_png_edit_black.png);
         }
     }
 
     &.copy {
-        background-image: url(../../images/icon_png_copy_black.png);
+        mask: url(../../images/icon_png_copy_black.png);
+        -webkit-mask: url(../../images/icon_png_copy_black.png);
+        background-color: #000;
 
         &.white {
-            background-image: url(../../images/icon_png_copy.png);
+            mask: url(../../images/icon_png_copy.png);
+            -webkit-mask: url(../../images/icon_png_copy.png);
         }
     }
 
     &.keyboard48 {
-        background-image: url(../../images/app_keyboard_48.png);
+        mask: url(../../images/app_keyboard_48.png);
+        -webkit-mask: url(../../images/app_keyboard_48.png);
     }
 
     &.colorPicker48 {
-        background-image: url(../../images/app_color_picker_48.png);
+        mask: url(../../images/app_color_picker_48.png);
+        -webkit-mask: url(../../images/app_color_picker_48.png);
     }
 
     &.move48 {
-        background-image: url(../../images/app_move_48.png);
+        mask: url(../../images/app_move_48.png);
+        -webkit-mask: url(../../images/app_move_48.png);
     }
 
     &.jumptoMain48 {
-        background-image: url(../../images/app_jump_main48.png);
+        mask: url(../../images/app_jump_main48.png);
+        -webkit-mask: url(../../images/app_jump_main48.png);
 
         &.s24 {
             width: 24px;
