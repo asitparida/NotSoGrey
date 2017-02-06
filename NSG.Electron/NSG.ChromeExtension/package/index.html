@@ -22,7 +22,7 @@
         <div class="ui-view-container-main enter-page anim-in-out anim-slide-left" ui-view data-anim-speed="340" data-anim-sync="true"></div>
     </div>
     <div class="app-nav-content">
-        <div class="nsg-app-nav">
+        <div class="nsg-app-nav" ng-class="{'dark': app.shared.darkTheme}">
             <div class="icon-container-holders">
                 <div class="nsg-action-holder" ng-repeat="item in app.shared.actions" ng-style="{'width': (100 / (app.shared.actions.length) - 1) + '%'}">
                     <app-action fn="{{item.fn}}" icon="{{item.icon}}" active="{{item.active}}" actitle="{{item.title}}"></app-action>
