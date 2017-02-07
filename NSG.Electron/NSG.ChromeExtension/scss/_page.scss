@@ -572,6 +572,7 @@ body {
 
             &.active {
                 opacity: 1;
+                border-bottom:5px solid rgba(1,1,1, 0.15);
             }
 
             &.w100 {
@@ -827,7 +828,6 @@ body {
         .icon {
             left: -6px;
             opacity: 0.50;
-            zoom: 0.75;
         }
     }
 }
@@ -1491,7 +1491,7 @@ body {
     }
 
     .nsg-color-details {
-        height: 140px;
+        height: calc(0.33 * (100vh - 84px));
 
         .box-holder {
             padding: 5px 0;
@@ -1574,7 +1574,7 @@ body {
 
                 .fill-box {
                     width: 100%;
-                    height: 150px;
+                    height: calc(0.33 * (100vh - 84px));
                     -moz-transition: background-color 200ms linear 0s;
                     -o-transition: background-color 200ms linear 0s;
                     -webkit-transition: background-color 200ms linear 0s;
@@ -1668,7 +1668,8 @@ body {
     mask: url(../../images/app_icon_24.png);
     -webkit-mask: url(../../images/app_icon_24.png);
     background-repeat: no-repeat;
-    top: 5px;
+    top: 0;
+    zoom:0.75;
 }
 
 .icon-app-dribbble {
@@ -1677,7 +1678,8 @@ body {
     mask: url(../../images/app_dribble_24.png);
     -webkit-mask: url(../../images/app_dribble_24.png);
     background-repeat: no-repeat;
-    top: 5px;
+    top: 0;
+    zoom:0.75;
 }
 
 .icon-app-theme {
@@ -1686,7 +1688,8 @@ body {
     mask: url(../../images/app_theme_24.png);
     -webkit-mask: url(../../images/app_theme_24.png);
     background-repeat: no-repeat;
-    top: 5px;
+    top: 0;
+    zoom:0.75;
 }
 
 .icon-app-contrast {
@@ -1695,7 +1698,8 @@ body {
     mask: url(../../images/app_contrast_24.png);
     -webkit-mask: url(../../images/app_contrast_24.png);
     background-repeat: no-repeat;
-    top: 5px;
+    top: 0;
+    zoom:0.75;
 }
 
 .icon-app-color-picker {
@@ -1704,7 +1708,8 @@ body {
     mask: url(../../images/app_color_picker_24.png);
     -webkit-mask: url(../../images/app_color_picker_24.png);
     background-repeat: no-repeat;
-    top: 5px;
+    top: 0;
+    zoom:0.75;
 }
 
 .icon-app-proper {
@@ -1715,6 +1720,7 @@ body {
     background-repeat: no-repeat;
     top: 6px;
     left: -6px;
+    zoom:0.75;
 }
 
 .icon-palette-share {
@@ -1746,6 +1752,7 @@ body {
 .icon-png {
     width: 36px;
     height: 36px;
+    zoom:0.75;
     background-repeat: no-repeat;
     background-size: contain;
     position: relative;

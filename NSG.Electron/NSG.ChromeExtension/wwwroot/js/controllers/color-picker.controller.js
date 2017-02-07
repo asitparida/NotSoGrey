@@ -17,10 +17,7 @@
     self.shared.darkTheme = true;
     self.topnav = { 'isActive1': true, 'isActive2': false, 'isActive3': false };
     self.name = 'Diablo Red';
-    console.log(self.shared);
-    self.color = self.origColorPrimary = self.shared.activeColor;
-    console.log(self.origColorPrimary);
-    console.log(self.shared.activeColor);
+    self.color = self.origColorPrimary = self.shared.activeColor;    
     self.foreColor = '#fff';
     self.cmyk = { c: 80, m: 33, y: 20, k: 14 };
     self.rgb = { r: 80, g: 10, b: 2 };
@@ -110,10 +107,12 @@
         //self.shared.copyHexToClipboard();
     }
 
-    angular.element(self.window).bind('resize', function () {                
-        self.init(self.shared.activeColor);
-        if (!self.scope.$$phase)
-            self.scope.$apply();
+    angular.element(self.window).bind('resize', function () {
+        if (self.state.current.name == 'ColorPicker') {
+            self.init(self.shared.activeColor);
+            if (!self.scope.$$phase)
+                self.scope.$apply();
+        }        
     });
 
     self.shared.initPicker = self.init;
@@ -182,7 +181,7 @@
         self.initializeCardPanElement();
         var _cardPanElementProps = _cardPanElement.getBoundingClientRect();
         var _cardHolderProps = document.getElementById('id_cardPannableContentHolder').getBoundingClientRect();
-        var _newTop = self.topBeforePan + (parseInt(e.deltaY) || 0);
+        var _newTop = self.topBeforePan + (parseInt(e.deltaY) || 0);        
         self.maxTop = _cardHolderProps.height - 40;
         if (_newTop > self.maxTop)
             _newTop = self.maxTop;
@@ -261,5 +260,12 @@
         else if (e.keyCode == 40) {
             self.mouseWheelDown();
         }
+    }
+
+    self.pickSpot = function (e) {
+        self.initializeCardPanElement();
+        self.topBeforePan = (parseInt(_cardPanElement.style.top) || 0);
+        var _delta = e.clientY - (document.getElementById('id_cardPannableContent').getBoundingClientRect().top + (document.getElementById('id_cardPannableContent').getBoundingClientRect().height / 2));
+        self.panvert({ 'deltaY': _delta });
     }
 }]);
