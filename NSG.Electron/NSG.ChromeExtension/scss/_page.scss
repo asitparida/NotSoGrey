@@ -572,6 +572,7 @@ body {
 
             &.active {
                 opacity: 1;
+                border-bottom:5px solid rgba(1,1,1, 0.15);
             }
 
             &.w100 {
@@ -1490,7 +1491,7 @@ body {
     }
 
     .nsg-color-details {
-        height: 140px;
+        height: calc(0.33 * (100vh - 84px));
 
         .box-holder {
             padding: 5px 0;
@@ -1573,7 +1574,7 @@ body {
 
                 .fill-box {
                     width: 100%;
-                    height: 150px;
+                    height: calc(0.33 * (100vh - 84px));
                     -moz-transition: background-color 200ms linear 0s;
                     -o-transition: background-color 200ms linear 0s;
                     -webkit-transition: background-color 200ms linear 0s;

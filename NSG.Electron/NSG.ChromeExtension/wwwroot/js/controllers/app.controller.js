@@ -25,24 +25,30 @@
         }
 
         self.goColorContrast = function (direction) {
+            if (self.state.current.name == 'ColorContrast')
+                return;
             self.showCurrentColor = true;
             self.direction = direction || 'fwd';
             self.state.go('ColorContrast');
         }
 
         self.goColorPicker = function (direction) {
+            if (self.state.current.name == 'ColorPicker')
+                return;
             self.showCurrentColor = false;
             self.direction = direction || 'fwd';
             self.state.go('ColorPicker');
         }
 
-        self.goColorDetails = function (direction) {
+        self.goColorDetails = function (direction) {            
+            if (self.state.current.name == 'ColorDetails.View')
+                return;
             self.showCurrentColor = false;
             self.editColor = false;
             self.direction = direction || 'fwd';
             self.state.go('ColorDetails.View');
             var _actions = [
-                { id: 1, name: 'color-picker', icon: 'icon-png back', fn: 'app.closeApp()', title: 'Back To Launcher' },
+                { id: 1, name: 'color-picker', icon: 'icon-png back', fn: 'app.goColorPicker()', title: 'Back To Launcher' },
                 { id: 2, name: 'color-picker', icon: 'icon-app-logo', fn: 'app.goColorDetails()', active: true, title: 'Color Details' },
                 { id: 4, name: 'color-contrast', icon: 'icon-app-contrast', fn: 'app.goColorContrast()', title: 'Color Contrast' },
                 { id: 3, name: 'color-theme', icon: 'icon-app-theme', fn: 'app.goThemesPopular()', title: 'Popular Themes' },
@@ -58,6 +64,8 @@
         }
 
         self.goColorEdit = function (direction) {
+            if (self.state.current.name == 'ColorDetails.Edit')
+                return;
             self.showCurrentColor = false;
             self.editColor = true;
             self.direction = direction || 'fwd';
@@ -75,11 +83,15 @@
         }
 
         self.goThemesPopular = function () {
+            if (self.state.current.name == 'ThemesPopular')
+                return;
             self.showCurrentColor = true;
             self.state.go('ThemesPopular');
         }
 
         self.goThemesCreator = function () {
+            if (self.state.current.name == 'ThemesCreator')
+                return;
             self.showCurrentColor = true;
             self.state.go('ThemesCreator');
         }
@@ -102,6 +114,8 @@
         }
 
         self.goDribbble = function () {
+            if (self.state.current.name == 'DribbbleShots')
+                return;
             if (navigator.onLine == false) {
                 self.shared.notifySave({ 'msg': 'Failed to detect network connectivity!', 'dontBreak': true });
                 return;
