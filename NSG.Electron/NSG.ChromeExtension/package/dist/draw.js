@@ -5,13 +5,15 @@ function fnLoadImg(data) {
     document.getElementById('magnify').style.width = data.width + 'px';
     document.getElementById('magnify').style.height = data.height + 'px';
     _canvasImg.setAttribute('src', data.imgData);
-    var _canvas = document.getElementById('nsg_canvas');
-    _canvas.width = data.width;
-    _canvas.height = data.height;
-    var ctx = _canvas.getContext('2d')
     var _img = new Image();
+    _img.onload = function(imgData){
+        var _canvas = document.getElementById('nsg_canvas');
+        _canvas.width = data.width;
+        _canvas.height = data.height;
+        var ctx = _canvas.getContext('2d')
+        ctx.drawImage(_canvasImg, 0, 0, data.width, data.height);
+    };
     _img.src = data.imgData;
-    ctx.drawImage(_img, 0, 0, _canvas.width, _canvas.height);
     document.getElementById('nsg_large').style.backgroundImage = 'url(' + data.imgData + ')';
     setTimeout(function () {
         if (window.innerHeight - _canvasImg.height > 0)
